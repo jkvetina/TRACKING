@@ -186,6 +186,74 @@ regions:
         alias: 519823
 
   columns: 
+  - # ====== Column: T00_COLOR ===================================
+    id: 7627914438981629
+    identification: 
+      column-name: T00_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 350
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: T00_COLOR
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: T00_TEXT ====================================
+    id: 7628042708981630
+    identification: 
+      column-name: T00_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 670
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: T00_TEXT
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
   - # ====== Column: T07_TEXT ====================================
     id: 15313370542690285
     identification: 
@@ -196,7 +264,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 710
+      sequence: 740
 
     accessibility: 
       value-identifies-row: false
@@ -230,7 +298,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 420
+      sequence: 440
 
     accessibility: 
       value-identifies-row: false
@@ -264,7 +332,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 720
+      sequence: 750
 
     accessibility: 
       value-identifies-row: false
@@ -298,7 +366,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 430
+      sequence: 450
 
     accessibility: 
       value-identifies-row: false
@@ -332,7 +400,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 740
+      sequence: 760
 
     accessibility: 
       value-identifies-row: false
@@ -366,7 +434,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 750
+      sequence: 770
 
     accessibility: 
       value-identifies-row: false
@@ -400,7 +468,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 760
+      sequence: 780
 
     accessibility: 
       value-identifies-row: false
@@ -434,7 +502,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 770
+      sequence: 790
 
     accessibility: 
       value-identifies-row: false
@@ -468,7 +536,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 780
+      sequence: 800
 
     accessibility: 
       value-identifies-row: false
@@ -502,7 +570,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 790
+      sequence: 810
 
     accessibility: 
       value-identifies-row: false
@@ -536,7 +604,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 800
+      sequence: 820
 
     accessibility: 
       value-identifies-row: false
@@ -570,7 +638,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 810
+      sequence: 830
 
     accessibility: 
       value-identifies-row: false
@@ -604,7 +672,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 820
+      sequence: 840
 
     accessibility: 
       value-identifies-row: false
@@ -638,7 +706,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 830
+      sequence: 850
 
     accessibility: 
       value-identifies-row: false
@@ -672,7 +740,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 840
+      sequence: 860
 
     accessibility: 
       value-identifies-row: false
@@ -706,7 +774,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 850
+      sequence: 870
 
     accessibility: 
       value-identifies-row: false
@@ -740,7 +808,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 860
+      sequence: 880
 
     accessibility: 
       value-identifies-row: false
@@ -774,7 +842,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 870
+      sequence: 890
 
     accessibility: 
       value-identifies-row: false
@@ -808,7 +876,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 880
+      sequence: 900
 
     accessibility: 
       value-identifies-row: false
@@ -842,7 +910,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 890
+      sequence: 910
 
     accessibility: 
       value-identifies-row: false
@@ -876,7 +944,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 900
+      sequence: 920
 
     accessibility: 
       value-identifies-row: false
@@ -910,7 +978,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 910
+      sequence: 930
 
     accessibility: 
       value-identifies-row: false
@@ -944,7 +1012,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 920
+      sequence: 940
 
     accessibility: 
       value-identifies-row: false
@@ -978,7 +1046,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 930
+      sequence: 950
 
     accessibility: 
       value-identifies-row: false
@@ -1012,7 +1080,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 940
+      sequence: 960
 
     accessibility: 
       value-identifies-row: false
@@ -1046,7 +1114,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 950
+      sequence: 970
 
     accessibility: 
       value-identifies-row: false
@@ -1080,7 +1148,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 350
+      sequence: 360
 
     accessibility: 
       value-identifies-row: false
@@ -1114,7 +1182,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 650
+      sequence: 680
 
     accessibility: 
       value-identifies-row: false
@@ -1148,7 +1216,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 360
+      sequence: 370
 
     accessibility: 
       value-identifies-row: false
@@ -1182,7 +1250,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 660
+      sequence: 690
 
     accessibility: 
       value-identifies-row: false
@@ -1216,7 +1284,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 370
+      sequence: 380
 
     accessibility: 
       value-identifies-row: false
@@ -1250,7 +1318,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 670
+      sequence: 700
 
     accessibility: 
       value-identifies-row: false
@@ -1284,7 +1352,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 380
+      sequence: 390
 
     accessibility: 
       value-identifies-row: false
@@ -1318,7 +1386,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 680
+      sequence: 710
 
     accessibility: 
       value-identifies-row: false
@@ -1352,7 +1420,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 390
+      sequence: 410
 
     accessibility: 
       value-identifies-row: false
@@ -1386,7 +1454,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 690
+      sequence: 720
 
     accessibility: 
       value-identifies-row: false
@@ -1420,7 +1488,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 400
+      sequence: 420
 
     accessibility: 
       value-identifies-row: false
@@ -1454,7 +1522,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 700
+      sequence: 730
 
     accessibility: 
       value-identifies-row: false
@@ -1488,7 +1556,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 410
+      sequence: 430
 
     accessibility: 
       value-identifies-row: false
@@ -1718,7 +1786,7 @@ regions:
     advanced: 
       column-initialization-javascript-function: |
         function (options) {
-            return color_cell(options, '&T0.', '&T0.', '&T0_COLOR.');
+            return color_cell(options, '&TODAY.', '&TODAY.', '&T00_COLOR.', '&T00_TEXT.');
         }
 
   - # ====== Column: T01 =========================================
@@ -3441,7 +3509,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 440
+      sequence: 460
 
     accessibility: 
       value-identifies-row: false
@@ -3475,7 +3543,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 450
+      sequence: 470
 
     accessibility: 
       value-identifies-row: false
@@ -3509,7 +3577,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 460
+      sequence: 480
 
     accessibility: 
       value-identifies-row: false
@@ -3543,7 +3611,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 470
+      sequence: 490
 
     accessibility: 
       value-identifies-row: false
@@ -3577,7 +3645,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 480
+      sequence: 500
 
     accessibility: 
       value-identifies-row: false
@@ -3611,7 +3679,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 490
+      sequence: 510
 
     accessibility: 
       value-identifies-row: false
@@ -3645,7 +3713,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 500
+      sequence: 520
 
     accessibility: 
       value-identifies-row: false
@@ -3679,7 +3747,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 510
+      sequence: 530
 
     accessibility: 
       value-identifies-row: false
@@ -3713,7 +3781,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 520
+      sequence: 540
 
     accessibility: 
       value-identifies-row: false
@@ -3747,7 +3815,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 530
+      sequence: 550
 
     accessibility: 
       value-identifies-row: false
@@ -3781,7 +3849,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 540
+      sequence: 560
 
     accessibility: 
       value-identifies-row: false
@@ -3815,7 +3883,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 550
+      sequence: 570
 
     accessibility: 
       value-identifies-row: false
@@ -3849,7 +3917,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 560
+      sequence: 580
 
     accessibility: 
       value-identifies-row: false
@@ -3883,7 +3951,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 570
+      sequence: 590
 
     accessibility: 
       value-identifies-row: false
@@ -3917,7 +3985,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 580
+      sequence: 600
 
     accessibility: 
       value-identifies-row: false
@@ -3951,7 +4019,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 590
+      sequence: 610
 
     accessibility: 
       value-identifies-row: false
@@ -3985,7 +4053,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 600
+      sequence: 620
 
     accessibility: 
       value-identifies-row: false
@@ -4019,7 +4087,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 610
+      sequence: 630
 
     accessibility: 
       value-identifies-row: false
@@ -4053,7 +4121,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 620
+      sequence: 640
 
     accessibility: 
       value-identifies-row: false
@@ -4087,7 +4155,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 630
+      sequence: 650
 
     accessibility: 
       value-identifies-row: false
@@ -4121,7 +4189,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 640
+      sequence: 660
 
     accessibility: 
       value-identifies-row: false

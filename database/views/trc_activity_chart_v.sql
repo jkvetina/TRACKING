@@ -140,6 +140,7 @@ SELECT
     t.t29,
     t.t30,
     --
+    trc_app.get_value_color(x.color, t.today) AS t00_color, trc_app.get_value_color(x.color, t.today, 'Y') AS t00_text,
     trc_app.get_value_color(x.color, t.t01) AS t01_color,   trc_app.get_value_color(x.color, t.t01, 'Y') AS t01_text,
     trc_app.get_value_color(x.color, t.t02) AS t02_color,   trc_app.get_value_color(x.color, t.t02, 'Y') AS t02_text,
     trc_app.get_value_color(x.color, t.t03) AS t03_color,   trc_app.get_value_color(x.color, t.t03, 'Y') AS t03_text,
