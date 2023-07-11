@@ -34,7 +34,7 @@ wwv_flow_imp_shared.create_list(
 '    t.attribute08,',
 '    t.attribute09,',
 '    t.attribute10',
-'FROM tsk_navigation_top_v t',
+'FROM trc_navigation_top_v t',
 'ORDER BY t.order#;'))
 ,p_list_status=>'PUBLIC'
 );
