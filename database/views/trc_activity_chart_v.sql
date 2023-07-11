@@ -145,7 +145,7 @@ SELECT
     trc_app.get_value_color(x.color, t.t02) AS t02_color,   trc_app.get_value_color(x.color, t.t02, 'Y') AS t02_text,
     trc_app.get_value_color(x.color, t.t03) AS t03_color,   trc_app.get_value_color(x.color, t.t03, 'Y') AS t03_text,
     trc_app.get_value_color(x.color, t.t04) AS t04_color,   trc_app.get_value_color(x.color, t.t04, 'Y') AS t04_text,
-    trc_app.get_value_color(x.color, t.t04) AS t05_color,   trc_app.get_value_color(x.color, t.t04, 'Y') AS t05_text,
+    trc_app.get_value_color(x.color, t.t05) AS t05_color,   trc_app.get_value_color(x.color, t.t05, 'Y') AS t05_text,
     trc_app.get_value_color(x.color, t.t06) AS t06_color,   trc_app.get_value_color(x.color, t.t06, 'Y') AS t06_text,
     trc_app.get_value_color(x.color, t.t07) AS t07_color,   trc_app.get_value_color(x.color, t.t07, 'Y') AS t07_text,
     trc_app.get_value_color(x.color, t.t08) AS t08_color,   trc_app.get_value_color(x.color, t.t08, 'Y') AS t08_text,
