@@ -13,9 +13,9 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_page.create_page(
  p_id=>800
-,p_name=>'Colors'
+,p_name=>'Setup Colors'
 ,p_alias=>'COLORS'
-,p_step_title=>'Colors'
+,p_step_title=>'Setup Colors'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(132348093459004139)  -- MAIN
 ,p_page_template_options=>'#DEFAULT#'

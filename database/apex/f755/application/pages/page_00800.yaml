@@ -1,10 +1,10 @@
 ---
-# ====== Page: Colors ========================================
+# ====== Page: Setup Colors ==================================
 id: 800
 identification: 
-  name: Colors
+  name: Setup Colors
   alias: COLORS
-  title: Colors
+  title: Setup Colors
   page-group: MAIN # 132348093459004139
 
 appearance: 
