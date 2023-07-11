@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   14:43 Úterý Červenec 11, 2023
+--   Date and Time:   15:38 Úterý Červenec 11, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -16386,11 +16386,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110467850088759066)
-,p_name=>'T1'
+,p_name=>'T01'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T01'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T1'
@@ -16418,11 +16417,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110467964852759067)
-,p_name=>'T2'
+,p_name=>'T02'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T02'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T2'
@@ -16450,11 +16448,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110467998156759068)
-,p_name=>'T3'
+,p_name=>'T03'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T03'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T3'
@@ -16482,11 +16479,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468102460759069)
-,p_name=>'T4'
+,p_name=>'T04'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T04'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T4'
@@ -16514,11 +16510,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468257456759070)
-,p_name=>'T5'
+,p_name=>'T05'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T05'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T5'
@@ -16546,11 +16541,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468279673759071)
-,p_name=>'T6'
+,p_name=>'T06'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T06'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T6'
@@ -16578,11 +16572,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468427902759072)
-,p_name=>'T7'
+,p_name=>'T07'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T07'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T7'
@@ -16610,11 +16603,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468522595759073)
-,p_name=>'T8'
+,p_name=>'T08'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T08'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T8'
@@ -16642,11 +16634,10 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468591773759074)
-,p_name=>'T9'
+,p_name=>'T09'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'T09'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'T9'
@@ -16672,9 +16663,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468747732759075)
 ,p_name=>'T10'
@@ -16707,6 +16695,9 @@ wwv_flow_imp_page.create_region_column(
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(110468846271759076)
 ,p_name=>'T11'
@@ -17794,9 +17785,6 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_is_visible=>true
 ,p_is_frozen=>false
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(15324647136695105)
 ,p_view_id=>wwv_flow_imp.id(113068928840862452)
@@ -17829,6 +17817,9 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_is_visible=>true
 ,p_is_frozen=>false
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(15328297077695114)
 ,p_view_id=>wwv_flow_imp.id(113068928840862452)
@@ -18672,9 +18663,9 @@ prompt --application/pages/page_00800
 begin
 wwv_flow_imp_page.create_page(
  p_id=>800
-,p_name=>'Colors'
+,p_name=>'Setup Colors'
 ,p_alias=>'COLORS'
-,p_step_title=>'Colors'
+,p_step_title=>'Setup Colors'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(132348093459004139)  -- MAIN
 ,p_page_template_options=>'#DEFAULT#'
