@@ -1,0 +1,8 @@
+.DS_Store
+
+database/apex/f*/application/shared_components/files/*.*
+database/apex/f*/application/shared_components/app_static_files/*.*
+database/grants/
+
+TEMP/
+
