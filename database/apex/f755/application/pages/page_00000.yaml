@@ -1,0 +1,464 @@
+---
+# ====== Page: Global Page ===================================
+id: 0
+identification: 
+  name: Global Page
+
+regions: 
+- # ====== Region: ITEMS =======================================
+  id: 101451276724354798
+  identification: 
+    title: ITEMS
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes (No Grid) # 124230858007403243
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: JS ==========================================
+  id: 138335978870168570
+  identification: 
+    title: JS
+    type: Static Content
+
+  source: 
+    html-code: |
+      <script>
+      
+      //
+      // WAIT FOR ELEMENT TO EXIST
+      //
+      var wait_for_element = function(search, start, fn, disconnect) {
+          var ob  = new MutationObserver(function(mutations) {
+              if ($(search).length) {
+                  fn(search, start);
+                  if (disconnect) {
+                      observer.disconnect();  // keep observing
+                  }
+              }
+          });
+          //
+          ob.observe(document.getElementById(start), {
+              childList: true,
+              subtree: true
+          });
+      };
+      
+      //
+      // HIDE SUCCESS MESSAGE
+      //
+      var hide_success_message = function(search, start) {
+          var $start = $('#' + start);
+          //
+          setTimeout(function() {
+              apex.message.hidePageSuccess();  // hide message
+              var content = $start.text().trim();
+              if (content.length) {
+                  console.log('MESSAGE CLOSED:', content);
+              }
+              $start.html('').removeClass('u-visible');  // clean APEX mess
+          }, 2000);
+      };
+      
+      </script>
+      
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes (No Grid) # 124230858007403243
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: CSS =========================================
+  id: 152736229183326842
+  identification: 
+    title: CSS
+    type: Static Content
+
+  source: 
+    html-code: |
+      <style>
+      
+      ul.DASH_LIST {
+        list-style-type: none;
+        margin: 0.5rem 0 0.5rem 3rem;
+      }
+      ul.DASH_LIST li:before {
+        content: '\2014';
+        position: absolute;
+        margin: 0 3rem 0 -1.5rem;
+      }
+      
+      </style>
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes (No Grid) # 124230858007403243
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P0_ROLE_2 ================================
+  id: 101451383421354799
+  identification: 
+    name: P0_ROLE_2
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_ROLE_7 ================================
+  id: 101451536405354800
+  identification: 
+    name: P0_ROLE_7
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_ROLE_8 ================================
+  id: 101451629957354801
+  identification: 
+    name: P0_ROLE_8
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 80
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_ROLE_1 ================================
+  id: 101451698407354802
+  identification: 
+    name: P0_ROLE_1
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_ROLE_4 ================================
+  id: 101451854635354803
+  identification: 
+    name: P0_ROLE_4
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 40
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_ROLE_5 ================================
+  id: 101451934584354804
+  identification: 
+    name: P0_ROLE_5
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 50
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_ROLE_6 ================================
+  id: 101452002612354805
+  identification: 
+    name: P0_ROLE_6
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_ROLE_3 ================================
+  id: 101452075761354806
+  identification: 
+    name: P0_ROLE_3
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: ITEMS # 101451276724354798
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+dynamic-actions: 
+- # ====== Dynamic Action: AUTOHIDE_SUCCESS ====================
+  id: 84147753665111573
+  identification: 
+    name: AUTOHIDE_SUCCESS
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 84147786881111574
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.theme42.util.configAPEXMsgs({
+            autoDismiss : true,
+            duration    : 2000
+        });
+
+    execution: 
+      sequence: 10
+      event: AUTOHIDE_SUCCESS # 84147753665111573
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

@@ -1,0 +1,67 @@
+---
+- # ====== Authentication: GOOGLE ==============================
+  id: 101530891752281974
+  identification: 
+    name: GOOGLE
+
+  settings: 
+    type: Social Sign-In
+    credential-store: 48132362808845792
+    authentication-provider: Google
+    scope: profile,email
+    username: '#email#'
+    convert-username-to-upper-case: false
+    additional-user-attributes: email,name
+    verify-attributes: true
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  post-logout-url: 
+    post-logout-url: 'https://www.google.com/accounts/Logout'
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: MASTER - APEX_ACCOUNTS ==============
+  id: 124653153130514364
+  identification: 
+    name: MASTER - APEX_ACCOUNTS
+
+  subscription: 
+    master: 
+      referenced-id: 37901138623322271
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: MASTER - OPEN_DOOR (TESTING ONLY) ===
+  id: 124653355534514365
+  identification: 
+    name: MASTER - OPEN_DOOR (TESTING ONLY)
+
+  subscription: 
+    master: 
+      referenced-id: 38115413754324720
+
+  settings: 
+    type: Open Door Credentials
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+

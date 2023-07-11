@@ -1,0 +1,30 @@
+---
+- # ====== List: NAVIGATION_TOP ================================
+  id: 88850119760794967
+  identification: 
+    name: NAVIGATION_TOP
+
+  source: 
+    type: SQL Query
+    sql-query: |
+      SELECT
+          t.lvl,
+          t.label, 
+          t.target, 
+          t.is_current_list_entry,
+          t.image, 
+          t.image_attribute,
+          t.image_alt_attribute,
+          t.attribute01,
+          t.attribute02,
+          t.attribute03,
+          t.attribute04,
+          t.attribute05,
+          t.attribute06,
+          t.attribute07,
+          t.attribute08,
+          t.attribute09,
+          t.attribute10
+      FROM tsk_navigation_top_v t
+      ORDER BY t.order#;
+

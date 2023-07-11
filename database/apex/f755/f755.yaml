@@ -1,0 +1,137 @@
+---
+# ====== Application: Activity Tracking ======================
+id: 755
+identification: 
+  name: Activity Tracking
+  alias: ACTIVITY
+  version: 2023-07-09
+
+row-search: 
+  tokenize: true
+
+availability: 
+  status: Available with Developer Toolbar
+  build-status: Run and Build Application
+
+error-handling: 
+  default-display-location: Inline with Field and in Notification
+
+report-printing: 
+  type: Native Printing
+
+advanced: 
+  friendly-urls: true
+  allow-feedback: false
+  logging: true
+  debugging: true
+  compatibility-mode: 21.2 / 22.1 / 22.2
+
+authentication: 
+  public-user: APEX_PUBLIC_USER
+  authentication-scheme: GOOGLE # 101530891752281974
+
+authorization: 
+  source-for-role-or-group-schemes: Access Control User Role Assignments
+
+session-management: 
+  rejoin-sessions: Disabled
+  maximum-session-length: 86400
+  session-timeout-url: '#LOGOUT_URL#'
+  maximum-session-idle-time: 14400
+  session-idle-timeout-url: '#LOGOUT_URL#'
+  session-timeout-warning: 0
+
+session-state-protection: 
+  enabled: true
+
+security: 
+  deep-linking: Enabled
+  browser-cache: Disabled
+  embed-in-frames: Deny
+  referrer-policy: strict-origin
+  html-escaping-mode: Extended
+
+advanced: 
+  pass-ecid: N
+
+database-session: 
+  parsing-schema: APPS
+
+globalization: 
+  primary-language: English (en)
+  document-direction: Left-To-Right
+  language-derived-from: Application Primary Language
+  automatic-time-zone: false
+  automatic-csv-encoding: true
+
+application-format-masks: 
+  date: DS
+  timestamp: DS
+  timestamp-time-zone: DS
+
+character-value-comparison: 
+  behavior: Database session NLS setting (default)
+
+logo: 
+  type: Text
+  text: '&APP_NAME.'
+
+progressive-web-app: 
+  enable: true
+  installable: false
+  display: Standalone
+  screen-orientation: Any
+  ios-status-bar-style: Default
+  enable-push-notifications: false
+
+navigation: 
+  home-url: 
+    url: 'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
+    page: HOME
+
+  login-url: 
+    url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
+    page: LOGIN
+
+navigation-menu: 
+  list-template: Top Navigation Menu # 124361563495403329
+  template-options: 
+  - '#DEFAULT#'
+  - js-tabLike
+  list-position: Top
+
+navigation-bar: 
+  implementation: List
+  list: NAVIGATION_TOP # 88850119760794967
+  list-template: Navigation Bar Q # 89567869122805182
+  template-options: 
+  - '#DEFAULT#'
+
+javascript: 
+  file-urls: 
+  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
+  - '#APP_FILES#app#MIN#.js?version=#APP_VERSION#'
+  include-jquery-migrate: false
+
+css: 
+  file-urls: 
+  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
+  - '#APP_FILES#app#MIN#.css?version=#APP_VERSION#'
+
+attributes: 
+  theme: Universal Theme # 700
+  global-page: 0
+  enable-end-users-to-choose-theme-style: false
+  add-"built-with-apex"-to-footer: false
+
+substitutions: 
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  value: 
+    static-value: Activity Tracking
+
