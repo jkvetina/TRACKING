@@ -1,0 +1,9 @@
+
+csv_export_filters:
+  NAVIGATION : 'app_id = 755'
+
+auto_filter_prefix   : 'TRC_%'
+
+auto_csv_refresh  : False
+auto_csv_add      : []
+
