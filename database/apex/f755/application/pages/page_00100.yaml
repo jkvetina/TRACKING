@@ -1,10 +1,10 @@
 ---
-# ====== Page: Activity Chart ================================
+# ====== Page: Tracking Apps =================================
 id: 100
 identification: 
-  name: Activity Chart
+  name: Tracking Apps
   alias: HOME
-  title: Activity Chart
+  title: Tracking Apps
   page-group: MAIN # 132348093459004139
 
 appearance: 
@@ -38,10 +38,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Activity Chart ==============================
+- # ====== Region: Tracking Apps ===============================
   id: 110466466235759052
   identification: 
-    title: Activity Chart
+    title: Tracking Apps
     type: Static Content
 
   layout: 
@@ -82,10 +82,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Activity Chart [GRID] =======================
+- # ====== Region: Chart [GRID] ================================
   id: 110467208557759060
   identification: 
-    title: Activity Chart [GRID]
+    title: Chart [GRID]
     type: Interactive Grid
 
   source: 
@@ -4161,7 +4161,7 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
-      page-header-text: Activity Chart [GRID]
+      page-header-text: Chart [GRID]
 
     column-headings: 
       font: Helvetica
@@ -4619,7 +4619,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Activity Chart # 110466466235759052
+    region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -4678,7 +4678,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Activity Chart # 110466466235759052
+    region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -4744,7 +4744,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Activity Chart # 110466466235759052
+    region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -4803,7 +4803,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Activity Chart # 110466466235759052
+    region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -4862,7 +4862,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Activity Chart # 110466466235759052
+    region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -4922,7 +4922,7 @@ buttons:
 
   layout: 
     sequence: 60
-    region: Activity Chart # 110466466235759052
+    region: Tracking Apps # 110466466235759052
     position: BODY
     start-new-layout: false
     start-new-row: false

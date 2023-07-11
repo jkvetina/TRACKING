@@ -13,9 +13,9 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_page.create_page(
  p_id=>100
-,p_name=>'Activity Chart'
+,p_name=>'Tracking Apps'
 ,p_alias=>'HOME'
-,p_step_title=>'Activity Chart'
+,p_step_title=>'Tracking Apps'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(132348093459004139)  -- MAIN
 ,p_page_template_options=>'#DEFAULT#'
@@ -26,7 +26,7 @@ wwv_flow_imp_page.create_page(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(110466466235759052)
-,p_plug_name=>'Activity Chart'
+,p_plug_name=>'Tracking Apps'
 ,p_region_css_classes=>'FILTERS'
 ,p_region_template_options=>'#DEFAULT#:t-HeroRegion--hideIcon'
 ,p_plug_template=>wwv_flow_imp.id(124262451698403265)
@@ -37,7 +37,7 @@ wwv_flow_imp_page.create_page_plug(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(110467208557759060)
-,p_plug_name=>'Activity Chart [GRID]'
+,p_plug_name=>'Chart [GRID]'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(124285680602403279)
@@ -48,12 +48,13 @@ wwv_flow_imp_page.create_page_plug(
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
 ,p_ajax_items_to_submit=>'P100_APPLICATION_ID,P100_PAGE_ID,P100_METRIC,P100_SOURCE,P100_USER_ID'
+,p_prn_content_disposition=>'ATTACHMENT'
 ,p_prn_units=>'INCHES'
 ,p_prn_paper_size=>'LETTER'
 ,p_prn_width=>11
 ,p_prn_height=>8.5
 ,p_prn_orientation=>'HORIZONTAL'
-,p_prn_page_header=>'Activity Chart [GRID]'
+,p_prn_page_header=>'Chart [GRID]'
 ,p_prn_page_header_font_color=>'#000000'
 ,p_prn_page_header_font_family=>'Helvetica'
 ,p_prn_page_header_font_weight=>'normal'

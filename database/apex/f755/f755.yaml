@@ -1,9 +1,9 @@
 ---
-# ====== Application: Activity Tracking ======================
+# ====== Application: Tracking Apps ==========================
 id: 755
 identification: 
-  name: Activity Tracking
-  alias: ACTIVITY
+  name: Tracking Apps
+  alias: TRC
   version: 2023-07-09
 
 row-search: 
@@ -133,5 +133,5 @@ substitutions:
     name: APP_NAME
 
   value: 
-    static-value: Activity Tracking
+    static-value: Tracking Apps
 
