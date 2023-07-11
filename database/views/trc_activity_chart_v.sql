@@ -7,10 +7,10 @@ WITH x AS (
         core.get_item('$USER_ID')           AS user_id,
         core.get_item('$METRIC')            AS metric,
         --
-        CASE WHEN INSTR(NVL(core.get_item('$SOURCE'), 'rendering:'), 'rendering:')      > 0 THEN 'Y' END AS count_rendering,
-        CASE WHEN INSTR(NVL(core.get_item('$SOURCE'), 'processing:'), 'processing:')    > 0 THEN 'Y' END AS count_processing,
-        CASE WHEN INSTR(NVL(core.get_item('$SOURCE'), 'ajax:'), 'ajax:')                > 0 THEN 'Y' END AS count_ajax,
-        CASE WHEN INSTR(NVL(core.get_item('$SOURCE'), 'auth:'), 'auth:')                > 0 THEN 'Y' END AS count_auth,
+        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'rendering:'), 'rendering:')     > 0 THEN 'Y' END AS count_rendering,
+        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'processing:'), 'processing:')   > 0 THEN 'Y' END AS count_processing,
+        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'ajax:'), 'ajax:')               > 0 THEN 'Y' END AS count_ajax,
+        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'auth:'), 'auth:')               > 0 THEN 'Y' END AS count_auth,
         --
         'COLOR_' || core.get_item('$METRIC') AS color
     FROM DUAL

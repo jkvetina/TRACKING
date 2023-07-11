@@ -4218,7 +4218,7 @@ page-items:
     height: 1
 
   validation: 
-    value-required: false
+    value-required: true
 
   list-of-values: 
     type: Shared Component
@@ -4343,13 +4343,13 @@ page-items:
     height: 1
 
   validation: 
-    value-required: false
+    value-required: true
 
   list-of-values: 
     type: Shared Component
     list-of-values: LOV_ACTIVITY_METRIC # 53420687070534646
     display-extra-values: true
-    display-null-value: true
+    display-null-value: false
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -4402,7 +4402,7 @@ page-items:
     height: 1
 
   validation: 
-    value-required: false
+    value-required: true
 
   list-of-values: 
     type: Shared Component

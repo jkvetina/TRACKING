@@ -3046,6 +3046,7 @@ wwv_flow_imp_page.create_page_button(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(110467654668759086)
 ,p_name=>'P100_APPLICATION_ID'
+,p_is_required=>true
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(110466466235759052)
 ,p_prompt=>'Application Id'
@@ -3084,12 +3085,12 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(110467856231759088)
 ,p_name=>'P100_METRIC'
+,p_is_required=>true
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(110466466235759052)
 ,p_prompt=>'Metric'
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_named_lov=>'LOV_ACTIVITY_METRIC'
-,p_lov_display_null=>'YES'
 ,p_cHeight=>1
 ,p_begin_on_new_line=>'N'
 ,p_field_template=>wwv_flow_imp.id(124365926097403332)
@@ -3102,6 +3103,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(110468001063759089)
 ,p_name=>'P100_SOURCE'
+,p_is_required=>true
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(110466466235759052)
 ,p_prompt=>'Data Source'
