@@ -1678,17 +1678,14 @@ regions:
     id: 110467613252759064
     identification: 
       column-name: PAGE_NAME
-      type: Textarea
+      type: Display Only
 
     heading: 
       heading: Page Name
       alignment: start
 
     settings: 
-      resizable: true
-      auto-height: false
-      character-counter: false
-      trim-spaces: Leading and Trailing
+      format: HTML
 
     layout: 
       sequence: 30
@@ -1697,10 +1694,6 @@ regions:
 
     accessibility: 
       value-identifies-row: false
-
-    validation: 
-      value-required: false
-      maximum-length: 0
 
     source: 
       type: Database Column
@@ -4309,7 +4302,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_PAGE_ID =============================
@@ -4375,7 +4368,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_METRIC ==============================
@@ -4434,7 +4427,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_SOURCE ==============================
@@ -4493,7 +4486,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_USER_ID =============================
@@ -4560,7 +4553,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 buttons: 
