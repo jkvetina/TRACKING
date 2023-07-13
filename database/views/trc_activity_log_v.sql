@@ -11,11 +11,7 @@ SELECT
     a.apex_session_id,
     a.workspace,
     a.application_name
-FROM trc_activity_log a
---FROM apex_workspace_activity_log a
-WHERE 1 = 1
-    AND a.application_id    IS NOT NULL
-    AND a.page_id           IS NOT NULL;
+FROM trc_activity_log_mv a;
 --
 COMMENT ON TABLE trc_activity_log_v IS '';
 
