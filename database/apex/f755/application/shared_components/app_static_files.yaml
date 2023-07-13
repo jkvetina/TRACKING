@@ -17,6 +17,24 @@
     mime-type: image/png
     file-character-set: Unicode UTF-8
 
+- # ====== Static Application File: app.min.js =================
+  id: 7899052821065076
+  identification: 
+    file-name: app.min.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app.min.css ================
+  id: 7899823811066353
+  identification: 
+    file-name: app.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
 - # ====== Static Application File: app.js =====================
   id: 88838275289558738
   identification: 
@@ -26,28 +44,10 @@
     mime-type: text/javascript
     file-character-set: Unicode UTF-8
 
-- # ====== Static Application File: app.min.js =================
-  id: 88839324507559617
-  identification: 
-    file-name: app.min.js
-
-  attributes: 
-    mime-type: text/javascript
-    file-character-set: Unicode UTF-8
-
 - # ====== Static Application File: app.css ====================
   id: 88839680908562241
   identification: 
     file-name: app.css
-
-  attributes: 
-    mime-type: text/css
-    file-character-set: Unicode UTF-8
-
-- # ====== Static Application File: app.min.css ================
-  id: 99688111299986401
-  identification: 
-    file-name: app.min.css
 
   attributes: 
     mime-type: text/css
