@@ -19,7 +19,7 @@ a AS (
     SELECT /*+ MATERIALIZE */
         a.application_id,
         a.page_id,
-        NULL                    AS page_name,
+        a.page_name,
         TRUNC(a.view_date)      AS view_date,
         a.page_view_type,
         a.elapsed_time,
@@ -43,7 +43,7 @@ s AS (
     SELECT /*+ MATERIALIZE */
         a.application_id,
         a.page_id,
-        NULL            AS page_name,
+        a.page_name,
         a.view_date,
         --
         CASE a.metric
@@ -57,6 +57,7 @@ s AS (
     GROUP BY
         a.application_id,
         a.page_id,
+        a.page_name,
         a.view_date,
         a.metric
 ),
@@ -66,7 +67,7 @@ t AS (
         s.page_id,
         s.page_name,
         --
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today      THEN s.value END, 0)), 0) AS today,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today      THEN s.value END, 0)), 0) AS t00,       -- today
         NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  1 THEN s.value END, 0)), 0) AS t01,       -- yesterday
         NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  2 THEN s.value END, 0)), 0) AS t02,
         NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  3 THEN s.value END, 0)), 0) AS t03,
@@ -108,7 +109,7 @@ SELECT
     t.application_id,
     t.page_id,
     t.page_name,
-    t.today,
+    t.t00           AS today,
     t.t01,
     t.t02,
     t.t03,
@@ -140,7 +141,7 @@ SELECT
     t.t29,
     t.t30,
     --
-    trc_app.get_value_color(x.color, t.today) AS t00_color, trc_app.get_value_color(x.color, t.today, 'Y') AS t00_text,
+    trc_app.get_value_color(x.color, t.t00) AS t00_color,   trc_app.get_value_color(x.color, t.t00, 'Y') AS t00_text,
     trc_app.get_value_color(x.color, t.t01) AS t01_color,   trc_app.get_value_color(x.color, t.t01, 'Y') AS t01_text,
     trc_app.get_value_color(x.color, t.t02) AS t02_color,   trc_app.get_value_color(x.color, t.t02, 'Y') AS t02_text,
     trc_app.get_value_color(x.color, t.t03) AS t03_color,   trc_app.get_value_color(x.color, t.t03, 'Y') AS t03_text,
