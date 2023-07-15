@@ -12,8 +12,10 @@ WITH x AS (
         CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'ajax:'), 'ajax:')               > 0 THEN 'Y' END AS count_ajax,
         CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'auth:'), 'auth:')               > 0 THEN 'Y' END AS count_auth,
         --
-        'COLOR_' || core.get_item('$METRIC') AS color
+        NVL(m.color_name, 'COLOR_' || core.get_item('$METRIC')) AS color
     FROM DUAL
+    LEFT JOIN trc_lov_metrics m
+        ON m.metric_code = core.get_item('$METRIC')
 ),
 a AS (
     SELECT /*+ MATERIALIZE */
@@ -47,11 +49,13 @@ s AS (
         a.view_date,
         --
         CASE a.metric
-            WHEN 'ACTIVITY' THEN COUNT(*)
-            WHEN 'USERS'    THEN COUNT(DISTINCT a.apex_user)
-            WHEN 'SESSIONS' THEN COUNT(DISTINCT a.apex_session_id)
-            WHEN 'AVG_TIME' THEN ROUND(AVG(a.elapsed_time), 2)
-            WHEN 'MAX_TIME' THEN ROUND(MAX(a.elapsed_time), 2)
+            WHEN 'ACTIVITY'     THEN COUNT(*)
+            WHEN 'USERS'        THEN COUNT(DISTINCT a.apex_user)
+            WHEN 'SESSIONS'     THEN COUNT(DISTINCT a.apex_session_id)
+            WHEN 'AVG_TIME'     THEN ROUND(AVG(a.elapsed_time), 2)
+            WHEN 'MEDIAN_TIME'  THEN ROUND(MIN(a.elapsed_time), 2)
+            WHEN 'MIN_TIME'     THEN ROUND(MIN(a.elapsed_time), 2)
+            WHEN 'MAX_TIME'     THEN ROUND(MAX(a.elapsed_time), 2)
             END AS value
     FROM a
     GROUP BY

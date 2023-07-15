@@ -12,7 +12,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(53420687070534646)  -- LOV_ACTIVITY_METRIC
+ p_id=>wwv_flow_imp.id(53420687070534646)
 ,p_lov_name=>'LOV_ACTIVITY_METRIC'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
@@ -21,6 +21,7 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_return_column_name=>'ID'
 ,p_display_column_name=>'NAME'
 ,p_group_sort_direction=>'ASC'
+,p_default_sort_column_name=>'ORDER#'
 ,p_default_sort_direction=>'ASC'
 );
 wwv_flow_imp.component_end;

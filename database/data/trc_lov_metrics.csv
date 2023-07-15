@@ -1,0 +1,8 @@
+"metric_code";"metric_name";"color_name";"order#"
+"ACTIVITY";"Activity";"COLOR_ACTIVITY";10
+"AVG_TIME";"Average Time";"COLOR_TIME";40
+"MAX_TIME";"Max Time";"COLOR_TIME";70
+"MEDIAN_TIME";"Median Time";"COLOR_TIME";50
+"MIN_TIME";"Min Time";"COLOR_TIME";60
+"SESSIONS";"Sessions";"COLOR_ACTIVITY";30
+"USERS";"Users";"COLOR_USERS";20

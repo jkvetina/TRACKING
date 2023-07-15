@@ -14,16 +14,11 @@ USING (
     SELECT 'COLOR_ACTIVITY' AS name, 20 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
     SELECT 'COLOR_ACTIVITY' AS name, 50 AS treshold, '#db8200' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
     SELECT 'COLOR_ACTIVITY' AS name, 100 AS treshold, '#b64201' AS color_bg, '#fff' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_AVG_TIME' AS name, 0 AS treshold, '#508104' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_AVG_TIME' AS name, 0.5 AS treshold, '#9e8e01' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_AVG_TIME' AS name, 1 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_AVG_TIME' AS name, 1.5 AS treshold, '#db8200' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_AVG_TIME' AS name, 2 AS treshold, '#b64201' AS color_bg, '#fff' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_MAX_TIME' AS name, 0 AS treshold, '#508104' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_MAX_TIME' AS name, 0.5 AS treshold, '#9e8e01' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_MAX_TIME' AS name, 1 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_MAX_TIME' AS name, 1.5 AS treshold, '#db8200' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_MAX_TIME' AS name, 2 AS treshold, '#b64201' AS color_bg, '#fff' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 0 AS treshold, '#508104' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 0.5 AS treshold, '#9e8e01' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 1 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 1.5 AS treshold, '#db8200' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 2 AS treshold, '#b64201' AS color_bg, '#fff' AS color_text FROM DUAL UNION ALL
     SELECT 'COLOR_USERS' AS name, 0 AS treshold, '#508104' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
     SELECT 'COLOR_USERS' AS name, 5 AS treshold, '#9e8e01' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
     SELECT 'COLOR_USERS' AS name, 10 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
