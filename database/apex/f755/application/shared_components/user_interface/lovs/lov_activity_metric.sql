@@ -12,7 +12,7 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(53420687070534646)
+ p_id=>wwv_flow_imp.id(53420687070534646)  -- LOV_ACTIVITY_METRIC
 ,p_lov_name=>'LOV_ACTIVITY_METRIC'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
