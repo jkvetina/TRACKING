@@ -93,6 +93,16 @@ CREATE OR REPLACE PACKAGE BODY trc_app AS
         RETURN '#' || out_color;
     END;
 
+
+
+    PROCEDURE init_headers
+    AS
+    BEGIN
+        FOR i IN 0 .. 30 LOOP
+            core.set_item('P100_HEADER_T' || LPAD(i, 2, '0'), REGEXP_REPLACE(TO_CHAR(TRUNC(SYSDATE) - i, 'Day, FMMonth ddth'), '\s+,', ','));
+        END LOOP;
+    END;
+
 END;
 /
 

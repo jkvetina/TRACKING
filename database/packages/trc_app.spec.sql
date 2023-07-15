@@ -7,6 +7,10 @@ CREATE OR REPLACE PACKAGE trc_app AS
     )
     RETURN trc_lov_colors.color_bg%TYPE;
 
+
+
+    PROCEDURE init_headers;
+
 END;
 /
 
