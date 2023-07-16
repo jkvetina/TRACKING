@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   07:50 Sobota Červenec 15, 2023
+--   Date and Time:   09:39 Neděle Červenec 16, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -114,7 +114,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-07-15'
+,p_flow_version=>'2023-07-16'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -18932,7 +18932,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_new_grid_column=>false
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TRC_LOV_METRICS'
-,p_include_rowid_column=>false
+,p_include_rowid_column=>true
 ,p_plug_source_type=>'NATIVE_IG'
 ,p_prn_units=>'INCHES'
 ,p_prn_paper_size=>'LETTER'
@@ -18976,7 +18976,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_display_sequence=>30
 ,p_value_alignment=>'LEFT'
 ,p_attribute_05=>'BOTH'
-,p_is_required=>false
+,p_is_required=>true
+,p_max_length=>32
 ,p_enable_filter=>true
 ,p_filter_operators=>'C:S:CASE_INSENSITIVE:REGEXP'
 ,p_filter_is_required=>false
@@ -18987,7 +18988,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_sort_group=>true
 ,p_enable_control_break=>true
 ,p_enable_hide=>true
-,p_is_primary_key=>true
+,p_is_primary_key=>false
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
@@ -19090,6 +19091,20 @@ wwv_flow_imp_page.create_region_column(
 ,p_attribute_02=>'Y'
 ,p_attribute_03=>'N'
 );
+wwv_flow_imp_page.create_region_column(
+ p_id=>wwv_flow_imp.id(7958021793857424)
+,p_name=>'ROWID'
+,p_source_type=>'DB_COLUMN'
+,p_source_expression=>'ROWID'
+,p_data_type=>'ROWID'
+,p_session_state_data_type=>'VARCHAR2'
+,p_item_type=>'NATIVE_HIDDEN'
+,p_display_sequence=>70
+,p_attribute_01=>'Y'
+,p_use_as_row_header=>false
+,p_is_primary_key=>true
+,p_include_in_export=>false
+);
 wwv_flow_imp_page.create_interactive_grid(
  p_id=>wwv_flow_imp.id(7628380570981633)
 ,p_internal_uid=>7628380570981633
@@ -19178,6 +19193,14 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_is_visible=>true
 ,p_is_frozen=>true
 );
+wwv_flow_imp_page.create_ig_report_column(
+ p_id=>wwv_flow_imp.id(8083334099685119)
+,p_view_id=>wwv_flow_imp.id(7944722555753807)
+,p_display_seq=>6
+,p_column_id=>wwv_flow_imp.id(7958021793857424)
+,p_is_visible=>true
+,p_is_frozen=>false
+);
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(121055244263902754)
 ,p_plug_name=>'Colors'
@@ -19201,7 +19224,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_new_grid_column=>false
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TRC_LOV_COLORS'
-,p_include_rowid_column=>false
+,p_include_rowid_column=>true
 ,p_plug_source_type=>'NATIVE_IG'
 ,p_prn_units=>'INCHES'
 ,p_prn_paper_size=>'LETTER'
@@ -19233,12 +19256,25 @@ wwv_flow_imp_page.create_page_plug(
 ,p_prn_border_color=>'#666666'
 );
 wwv_flow_imp_page.create_region_column(
+ p_id=>wwv_flow_imp.id(7958165064857425)
+,p_name=>'ROWID'
+,p_source_type=>'DB_COLUMN'
+,p_source_expression=>'ROWID'
+,p_data_type=>'ROWID'
+,p_session_state_data_type=>'VARCHAR2'
+,p_item_type=>'NATIVE_HIDDEN'
+,p_display_sequence=>70
+,p_attribute_01=>'Y'
+,p_use_as_row_header=>false
+,p_is_primary_key=>true
+,p_include_in_export=>false
+);
+wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(121055509659902757)
 ,p_name=>'NAME'
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'NAME'
 ,p_data_type=>'VARCHAR2'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_TEXT_FIELD'
 ,p_heading=>'Name'
@@ -19258,7 +19294,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_sort_group=>true
 ,p_enable_control_break=>true
 ,p_enable_hide=>true
-,p_is_primary_key=>true
+,p_is_primary_key=>false
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
@@ -19268,7 +19304,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'TRESHOLD'
 ,p_data_type=>'NUMBER'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_TEXT_FIELD'
 ,p_heading=>'Treshold'
@@ -19284,7 +19319,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_sort_group=>true
 ,p_enable_control_break=>true
 ,p_enable_hide=>true
-,p_is_primary_key=>true
+,p_is_primary_key=>false
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
@@ -19411,6 +19446,14 @@ wwv_flow_imp_page.create_ig_report_view(
 ,p_srv_exclude_null_values=>false
 ,p_srv_only_display_columns=>true
 ,p_edit_mode=>false
+);
+wwv_flow_imp_page.create_ig_report_column(
+ p_id=>wwv_flow_imp.id(8084261109685126)
+,p_view_id=>wwv_flow_imp.id(121086236165926937)
+,p_display_seq=>6
+,p_column_id=>wwv_flow_imp.id(7958165064857425)
+,p_is_visible=>true
+,p_is_frozen=>false
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(121086684637926939)

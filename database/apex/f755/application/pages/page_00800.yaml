@@ -91,7 +91,7 @@ regions:
     type: Table / View
     table-owner: Parsing Schema
     table-name: TRC_LOV_METRICS
-    include-rowid-column: false
+    include-rowid-column: true
 
   layout: 
     sequence: 40
@@ -207,14 +207,15 @@ regions:
       value-identifies-row: false
 
     validation: 
-      value-required: false
+      value-required: true
+      maximum-length: 32
 
     source: 
       type: Database Column
       database-column: METRIC_CODE
       data-type: VARCHAR2
       query-only: false
-      primary-key: true
+      primary-key: false
 
     default: 
       duplicate-copies-existing-value: true
@@ -418,6 +419,33 @@ regions:
     layout: 
       sequence: 10
 
+  - # ====== Column: ROWID =======================================
+    id: 7958021793857424
+    identification: 
+      column-name: ROWID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 70
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ROWID
+      data-type: ROWID
+      primary-key: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
   printing: 
     page: 
       size: Letter
@@ -510,7 +538,7 @@ regions:
     type: Table / View
     table-owner: Parsing Schema
     table-name: TRC_LOV_COLORS
-    include-rowid-column: false
+    include-rowid-column: true
 
   layout: 
     sequence: 20
@@ -603,6 +631,33 @@ regions:
         alias: 522443
 
   columns: 
+  - # ====== Column: ROWID =======================================
+    id: 7958165064857425
+    identification: 
+      column-name: ROWID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 70
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ROWID
+      data-type: ROWID
+      primary-key: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
   - # ====== Column: NAME ========================================
     id: 121055509659902757
     identification: 
@@ -634,7 +689,7 @@ regions:
       database-column: NAME
       data-type: VARCHAR2
       query-only: false
-      primary-key: true
+      primary-key: false
 
     default: 
       duplicate-copies-existing-value: true
@@ -688,7 +743,7 @@ regions:
       database-column: TRESHOLD
       data-type: NUMBER
       query-only: false
-      primary-key: true
+      primary-key: false
 
     default: 
       duplicate-copies-existing-value: true
