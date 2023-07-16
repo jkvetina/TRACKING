@@ -9,21 +9,20 @@ DELETE FROM trc_lov_colors;
 --
 MERGE INTO trc_lov_colors t
 USING (
-    SELECT 'COLOR_ACTIVITY' AS name, 0 AS treshold, '#508104' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_ACTIVITY' AS name, 10 AS treshold, '#9e8e01' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_ACTIVITY' AS name, 20 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_ACTIVITY' AS name, 50 AS treshold, '#db8200' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_ACTIVITY' AS name, 100 AS treshold, '#b64201' AS color_bg, '#fff' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_TIME' AS name, 0 AS treshold, '#508104' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_TIME' AS name, 0.5 AS treshold, '#9e8e01' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_TIME' AS name, 1 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_TIME' AS name, 1.5 AS treshold, '#db8200' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_TIME' AS name, 2 AS treshold, '#b64201' AS color_bg, '#fff' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_USERS' AS name, 0 AS treshold, '#508104' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_USERS' AS name, 5 AS treshold, '#9e8e01' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_USERS' AS name, 10 AS treshold, '#f3b800' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_USERS' AS name, 20 AS treshold, '#db8200' AS color_bg, '#000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_USERS' AS name, 50 AS treshold, '#b64201' AS color_bg, '#fff' AS color_text FROM DUAL
+    SELECT 'COLOR_ACTIVITY' AS name, 0 AS treshold, '#508104' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_ACTIVITY' AS name, 10 AS treshold, '#9e8e01' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_ACTIVITY' AS name, 20 AS treshold, '#f3b800' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_ACTIVITY' AS name, 50 AS treshold, '#db8200' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_ACTIVITY' AS name, 100 AS treshold, '#b64201' AS color_bg, '#ffffff' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 0 AS treshold, '#508104' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 0.5 AS treshold, '#9e8e01' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 1 AS treshold, '#f3b800' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 1.5 AS treshold, '#db8200' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_TIME' AS name, 2 AS treshold, '#b64201' AS color_bg, '#ffffff' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS' AS name, 1 AS treshold, '#4e7779' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS' AS name, 2 AS treshold, '#90c7ca' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS' AS name, 5 AS treshold, '#c3ba9b' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS' AS name, 10 AS treshold, '#7e6d53' AS color_bg, '#000000' AS color_text FROM DUAL
 ) s
 ON (
     t.name = s.name
