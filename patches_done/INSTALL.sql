@@ -6,32 +6,46 @@
 --
 -- TABLES
 --
+@@"../../database/tables/trc_activity_log.sql"
 @@"../../database/tables/trc_lov_colors.sql"
+@@"../../database/tables/trc_lov_metrics.sql"
 @@"../../database/tables/trc_navigation.sql"
 
 --
 -- OBJECTS
 --
 @@"../../database/packages/trc_app.spec.sql"
-@@"../../database/views/trc_activity_log_v.sql"
-@@"../../database/views/trc_activity_chart_v.sql"
-@@"../../database/views/trc_lov_activity_metric_v.sql"
 @@"../../database/views/trc_lov_activity_source_v.sql"
+@@"../../database/views/trc_activity_log_v.sql"
+@@"../../database/views/trc_lov_activity_metric_v.sql"
 @@"../../database/views/trc_lov_activity_apps_v.sql"
 @@"../../database/views/trc_lov_activity_pages_v.sql"
 @@"../../database/views/trc_lov_activity_users_v.sql"
+@@"../../database/views/trc_navigation_top_v.sql"
 @@"../../database/packages/trc_app.sql"
+@@"../../database/views/trc_activity_chart_v.sql"
 
 --
 -- MVIEWS
 --
+@@"../../patches/50_mviews/50_recompile.sql"
+--
+@@"../../database/mviews/trc_activity_log_mv.sql"
 @@"../../database/mviews/trc_navigation_map_mv.sql"
-@@"../../database/views/trc_navigation_top_v.sql"
+
+--
+-- INDEXES
+--
+@@"../../patches/55_indexes/50_recompile.sql"
+--
+@@"../../database/indexes/trc_activity_log_mv_page.sql"
+@@"../../database/indexes/trc_activity_log_mv_user.sql"
 
 --
 -- DATA
 --
 @@"../../patches/60_data/trc_navigation.sql"
+@@"../../patches/60_data/trc_lov_metrics.sql"
 @@"../../patches/60_data/trc_lov_colors.sql"
 --
 COMMIT;
