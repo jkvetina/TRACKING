@@ -6,7 +6,6 @@
 --
 -- TABLES
 --
-@@"../../database/tables/trc_activity_log.sql"
 @@"../../database/tables/trc_lov_colors.sql"
 @@"../../database/tables/trc_lov_metrics.sql"
 @@"../../database/tables/trc_navigation.sql"
