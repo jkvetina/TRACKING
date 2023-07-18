@@ -1,4 +1,22 @@
 ---
+- # ====== List of Values: LOV_COLOR_SCHEMES ===================
+  id: 8116205990834229
+  identification: 
+    name: LOV_COLOR_SCHEMES
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT DISTINCT name
+      FROM trc_lov_colors;
+
+  column-mapping: 
+    return: NAME
+    display: NAME
+    default-sort: NAME
+    sort-direction: Ascending (Nulls Last)
+
 - # ====== List of Values: LOV_ACTIVITY_METRIC =================
   id: 53420687070534646
   identification: 

@@ -31,6 +31,7 @@ prompt --install
 @@application/shared_components/user_interface/lovs/lov_activity_pages.sql
 @@application/shared_components/user_interface/lovs/lov_activity_source.sql
 @@application/shared_components/user_interface/lovs/lov_activity_users.sql
+@@application/shared_components/user_interface/lovs/lov_color_schemes.sql
 @@application/pages/page_groups.sql
 @@application/comments.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
