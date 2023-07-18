@@ -1,10 +1,10 @@
 ---
-# ====== Page: Setup Colors ==================================
+# ====== Page: #fa-wrench Setup ==============================
 id: 800
 identification: 
-  name: Setup Colors
+  name: '#fa-wrench Setup'
   alias: COLORS
-  title: Setup Colors
+  title: Setup
   page-group: MAIN # 132348093459004139
 
 appearance: 
@@ -298,15 +298,11 @@ regions:
     id: 7628656372981636
     identification: 
       column-name: COLOR_NAME
-      type: Text Field
+      type: Select List
 
     heading: 
-      heading: Color Name
+      heading: Color Scheme
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 50
@@ -318,7 +314,12 @@ regions:
 
     validation: 
       value-required: false
-      maximum-length: 32
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_COLOR_SCHEMES # 8116205990834229
+      display-extra-values: false
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -338,7 +339,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -717,19 +718,19 @@ regions:
     id: 121055605393902758
     identification: 
       column-name: TRESHOLD
-      type: Text Field
+      type: Number Field
 
     heading: 
       heading: Treshold
-      alignment: start
+      alignment: end
 
     settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
+      number-alignment: Start
+      virtual-keyboard: Decimal
 
     layout: 
       sequence: 40
-      column-alignment: start
+      column-alignment: end
       stretch: Use Report Setting
 
     accessibility: 
@@ -750,7 +751,7 @@ regions:
 
     column-filter: 
       enabled: true
-      lov-type: Distinct Column
+      lov-type: None
 
     export-/-printing: 
       include-in-export-/-print: false

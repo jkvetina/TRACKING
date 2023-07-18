@@ -13,9 +13,9 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_page.create_page(
  p_id=>800
-,p_name=>'Setup Colors'
+,p_name=>'#fa-wrench Setup'
 ,p_alias=>'COLORS'
-,p_step_title=>'Setup Colors'
+,p_step_title=>'Setup'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(132348093459004139)  -- MAIN
 ,p_page_template_options=>'#DEFAULT#'
@@ -141,20 +141,22 @@ wwv_flow_imp_page.create_region_column(
 ,p_source_expression=>'COLOR_NAME'
 ,p_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
-,p_item_type=>'NATIVE_TEXT_FIELD'
-,p_heading=>'Color Name'
+,p_item_type=>'NATIVE_SELECT_LIST'
+,p_heading=>'Color Scheme'
 ,p_heading_alignment=>'LEFT'
 ,p_display_sequence=>50
 ,p_value_alignment=>'LEFT'
-,p_attribute_05=>'BOTH'
 ,p_is_required=>false
-,p_max_length=>32
+,p_lov_type=>'SHARED'
+,p_lov_id=>wwv_flow_imp.id(8116205990834229)  -- LOV_COLOR_SCHEMES
+,p_lov_display_extra=>false
+,p_lov_display_null=>true
 ,p_enable_filter=>true
 ,p_filter_operators=>'C:S:CASE_INSENSITIVE:REGEXP'
 ,p_filter_is_required=>false
 ,p_filter_text_case=>'MIXED'
 ,p_filter_exact_match=>true
-,p_filter_lov_type=>'DISTINCT'
+,p_filter_lov_type=>'LOV'
 ,p_use_as_row_header=>false
 ,p_enable_sort_group=>true
 ,p_enable_control_break=>true
@@ -251,6 +253,7 @@ wwv_flow_imp_page.create_ig_report(
 ,p_static_id=>'79446'
 ,p_type=>'PRIMARY'
 ,p_default_view=>'GRID'
+,p_rows_per_page=>100
 ,p_show_row_number=>false
 ,p_settings_area_expanded=>true
 );
@@ -294,6 +297,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(7628799257981637)
 ,p_is_visible=>true
 ,p_is_frozen=>false
+,p_width=>80
 ,p_sort_order=>1
 ,p_sort_direction=>'ASC'
 ,p_sort_nulls=>'LAST'
@@ -418,16 +422,17 @@ wwv_flow_imp_page.create_region_column(
 ,p_source_expression=>'TRESHOLD'
 ,p_data_type=>'NUMBER'
 ,p_is_query_only=>false
-,p_item_type=>'NATIVE_TEXT_FIELD'
+,p_item_type=>'NATIVE_NUMBER_FIELD'
 ,p_heading=>'Treshold'
-,p_heading_alignment=>'LEFT'
+,p_heading_alignment=>'RIGHT'
 ,p_display_sequence=>40
-,p_value_alignment=>'LEFT'
-,p_attribute_05=>'BOTH'
+,p_value_alignment=>'RIGHT'
+,p_attribute_03=>'left'
+,p_attribute_04=>'decimal'
 ,p_is_required=>true
 ,p_enable_filter=>true
 ,p_filter_is_required=>false
-,p_filter_lov_type=>'DISTINCT'
+,p_filter_lov_type=>'NONE'
 ,p_use_as_row_header=>false
 ,p_enable_sort_group=>true
 ,p_enable_control_break=>true
@@ -548,6 +553,7 @@ wwv_flow_imp_page.create_ig_report(
 ,p_static_id=>'522443'
 ,p_type=>'PRIMARY'
 ,p_default_view=>'GRID'
+,p_rows_per_page=>1000
 ,p_show_row_number=>false
 ,p_settings_area_expanded=>false
 );
@@ -601,6 +607,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(121055722647902759)
 ,p_is_visible=>true
 ,p_is_frozen=>false
+,p_width=>120
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(121089382188926948)
@@ -609,6 +616,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(121055824403902760)
 ,p_is_visible=>true
 ,p_is_frozen=>false
+,p_width=>120
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(121090306408926950)

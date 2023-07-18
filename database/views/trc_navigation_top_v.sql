@@ -22,7 +22,7 @@ t AS (
         n.parent_id,
         --
         s.page_alias,
-        s.page_name,        -- core.get_page_name(t.page_id)    -- #icons
+        core.get_page_name(in_name => s.page_name) AS page_name,
         s.auth_scheme,
         n.is_reset,
         n.order#
