@@ -30,6 +30,6 @@ FROM apex_workspace_activity_log a
 WHERE 1 = 1
     AND a.application_id    IS NOT NULL
     AND a.application_name  IS NOT NULL     -- to remove other workspaces
-    AND a.page_id           IS NOT NULL;
+    AND a.page_id           > 0;
 --
 
