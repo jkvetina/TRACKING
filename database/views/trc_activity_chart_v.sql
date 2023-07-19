@@ -17,6 +17,20 @@ WITH x AS (
     LEFT JOIN trc_lov_metrics m
         ON m.metric_code = core.get_item('$METRIC')
 ),
+p AS (
+    SELECT /*+ MATERIALIZE */
+        p.application_id,
+        p.page_id,
+        p.page_name
+    FROM trc_activity_pages_v p
+    JOIN x
+        ON (x.app_id        = p.application_id  OR x.app_id IS NULL)
+        AND (x.page_id      = p.page_id         OR x.page_id IS NULL)
+    GROUP BY
+        p.application_id,
+        p.page_id,
+        p.page_name
+),
 a AS (
     SELECT /*+ MATERIALIZE */
         a.application_id,
@@ -43,9 +57,9 @@ a AS (
 ),
 s AS (
     SELECT /*+ MATERIALIZE */
-        a.application_id,
-        a.page_id,
-        a.page_name,
+        p.application_id,
+        p.page_id,
+        p.page_name,
         a.view_date,
         --
         CASE a.metric
@@ -57,11 +71,14 @@ s AS (
             WHEN 'MIN_TIME'     THEN ROUND(MIN(a.elapsed_time), 2)
             WHEN 'MAX_TIME'     THEN ROUND(MAX(a.elapsed_time), 2)
             END AS value
-    FROM a
+    FROM p
+    LEFT JOIN a
+        ON a.application_id     = p.application_id
+        AND a.page_id           = p.page_id
     GROUP BY
-        a.application_id,
-        a.page_id,
-        a.page_name,
+        p.application_id,
+        p.page_id,
+        p.page_name,
         a.view_date,
         a.metric
 ),
@@ -177,10 +194,7 @@ SELECT
     trc_app.get_value_color(x.color, t.t29) AS t29_color,   trc_app.get_value_color(x.color, t.t29, 'Y') AS t29_text,
     trc_app.get_value_color(x.color, t.t30) AS t30_color,   trc_app.get_value_color(x.color, t.t30, 'Y') AS t30_text
 FROM t
-CROSS JOIN x
-ORDER BY
-    t.application_id,
-    t.page_id;
+CROSS JOIN x;
 --
 COMMENT ON TABLE trc_activity_chart_v IS '';
 
