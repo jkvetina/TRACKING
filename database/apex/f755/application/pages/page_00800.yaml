@@ -45,13 +45,13 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 30
+    sequence: 50
     parent-region: No Parent
     position: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
-    new-column: true
+    new-column: false
     column-span: Automatic
 
   appearance: 
@@ -94,7 +94,7 @@ regions:
     include-rowid-column: true
 
   layout: 
-    sequence: 40
+    sequence: 60
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -464,6 +464,1436 @@ regions:
       font-color: '#000000'
       alignment: center
       page-header-text: Metrics [GRID]
+
+    column-headings: 
+      font: Helvetica
+      font-weight: Bold
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#EEEEEE'
+
+    columns: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#FFFFFF'
+
+    page-footer: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+
+- # ====== Region: Preview =====================================
+  id: 7958258012857426
+  identification: 
+    title: Preview
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 124262451698403265
+    template-options: 
+    - '#DEFAULT#'
+    - t-HeroRegion--hideIcon
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Preview [GRID] ==============================
+  id: 118613187428334009
+  identification: 
+    title: Preview [GRID]
+    type: Interactive Grid
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TRC_COLOR_PREVIEW_V
+    include-rowid-column: false
+    page-items-to-submit: 
+    - P800_APPLICATION_ID
+    - P800_PAGE_ID
+    - P800_METRIC
+    - P800_SOURCE
+    - P800_USER_ID
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report # 124285680602403279
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 118613354102334010
+    edit: 
+      enabled: false
+
+    performance: 
+      lazy-loading: true
+
+    appearance: 
+      select-first-row: true
+      fixed-row-height: true
+
+    pagination: 
+      type: Page
+      show-total-count: true
+
+    toolbar: 
+      show: true
+      controls: 
+      - Search Column Selection
+      - Search Field
+      - Actions Menu
+      - Save Button
+
+    enable-users-to: 
+      save-public-report: false
+      flashback: true
+      define-chart-view: true
+      download: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 121214719522437400
+      identification: 
+        name: Primary Report
+        alias: 519823
+
+  columns: 
+  - # ====== Column: NAME ========================================
+    id: 8143340184569531
+    identification: 
+      column-name: NAME
+      type: Text Field
+
+    heading: 
+      heading: Name
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 10
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 32
+
+    source: 
+      type: Database Column
+      database-column: NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: C01_COLOR ===================================
+    id: 8143485240569532
+    identification: 
+      column-name: C01_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 130
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C01_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C02_COLOR ===================================
+    id: 8143504692569533
+    identification: 
+      column-name: C02_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 140
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C02_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C03_COLOR ===================================
+    id: 8143608097569534
+    identification: 
+      column-name: C03_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 150
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C03_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C04_COLOR ===================================
+    id: 8143711073569535
+    identification: 
+      column-name: C04_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 160
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C04_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C05_COLOR ===================================
+    id: 8143842433569536
+    identification: 
+      column-name: C05_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 170
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C05_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C06_COLOR ===================================
+    id: 8143968829569537
+    identification: 
+      column-name: C06_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 180
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C06_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C07_COLOR ===================================
+    id: 8144019271569538
+    identification: 
+      column-name: C07_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 190
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C07_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C08_COLOR ===================================
+    id: 8144194004569539
+    identification: 
+      column-name: C08_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 200
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C08_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C09_COLOR ===================================
+    id: 8144280690569540
+    identification: 
+      column-name: C09_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 210
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C09_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C10_COLOR ===================================
+    id: 8144371611569541
+    identification: 
+      column-name: C10_COLOR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 220
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C10_COLOR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C01_TEXT ====================================
+    id: 8144461692569542
+    identification: 
+      column-name: C01_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 230
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C01_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C02_TEXT ====================================
+    id: 8144573643569543
+    identification: 
+      column-name: C02_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 240
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C02_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C03_TEXT ====================================
+    id: 8144681774569544
+    identification: 
+      column-name: C03_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 250
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C03_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C04_TEXT ====================================
+    id: 8144702317569545
+    identification: 
+      column-name: C04_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 260
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C04_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C05_TEXT ====================================
+    id: 8144836559569546
+    identification: 
+      column-name: C05_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 270
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C05_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C06_TEXT ====================================
+    id: 8144946187569547
+    identification: 
+      column-name: C06_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 280
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C06_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C07_TEXT ====================================
+    id: 8145041201569548
+    identification: 
+      column-name: C07_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 290
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C07_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C08_TEXT ====================================
+    id: 8145198089569549
+    identification: 
+      column-name: C08_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 300
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C08_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C09_TEXT ====================================
+    id: 8145299930569550
+    identification: 
+      column-name: C09_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 310
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C09_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C10_TEXT ====================================
+    id: 8185305293592701
+    identification: 
+      column-name: C10_TEXT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 320
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: C10_TEXT
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: C01 =========================================
+    id: 118613828959334015
+    identification: 
+      column-name: C01
+      type: Number Field
+
+    heading: 
+      heading: C01
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 20
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C01
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C01.', '&C01.', '&C01_COLOR.', '&C01_TEXT.');
+        }
+
+  - # ====== Column: C02 =========================================
+    id: 118613943723334016
+    identification: 
+      column-name: C02
+      type: Number Field
+
+    heading: 
+      heading: C02
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 30
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C02
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C02.', '&C02.', '&C02_COLOR.', '&C02_TEXT.');
+        }
+
+  - # ====== Column: C03 =========================================
+    id: 118613977027334017
+    identification: 
+      column-name: C03
+      type: Number Field
+
+    heading: 
+      heading: C03
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 40
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C03
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C03.', '&C03.', '&C03_COLOR.', '&C03_TEXT.');
+        }
+
+  - # ====== Column: C04 =========================================
+    id: 118614081331334018
+    identification: 
+      column-name: C04
+      type: Number Field
+
+    heading: 
+      heading: C04
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 50
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C04
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C04.', '&C04.', '&C04_COLOR.', '&C04_TEXT.');
+        }
+
+  - # ====== Column: C05 =========================================
+    id: 118614236327334019
+    identification: 
+      column-name: C05
+      type: Number Field
+
+    heading: 
+      heading: C05
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 60
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C05
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C05.', '&C05.', '&C05_COLOR.', '&C05_TEXT.');
+        }
+
+  - # ====== Column: C06 =========================================
+    id: 118614258544334020
+    identification: 
+      column-name: C06
+      type: Number Field
+
+    heading: 
+      heading: C06
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 70
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C06
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C06.', '&C06.', '&C06_COLOR.', '&C06_TEXT.');
+        }
+
+  - # ====== Column: C07 =========================================
+    id: 118614406773334021
+    identification: 
+      column-name: C07
+      type: Number Field
+
+    heading: 
+      heading: C07
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 80
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C07
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C07.', '&C07.', '&C07_COLOR.', '&C07_TEXT.');
+        }
+
+  - # ====== Column: C08 =========================================
+    id: 118614501466334022
+    identification: 
+      column-name: C08
+      type: Number Field
+
+    heading: 
+      heading: C08
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 90
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C08
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C08.', '&C08.', '&C08_COLOR.', '&C08_TEXT.');
+        }
+
+  - # ====== Column: C09 =========================================
+    id: 118614570644334023
+    identification: 
+      column-name: C09
+      type: Number Field
+
+    heading: 
+      heading: C09
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 100
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C09
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C09.', '&C09.', '&C09_COLOR.', '&C09_TEXT.');
+        }
+
+  - # ====== Column: C10 =========================================
+    id: 118614726603334024
+    identification: 
+      column-name: C10
+      type: Number Field
+
+    heading: 
+      heading: C10
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 110
+      column-alignment: end
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - COLOR_CELL
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: C10
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            return color_cell(options, '&C10.', '&C10.', '&C10_COLOR.', '&C10_TEXT.');
+        }
+
+  printing: 
+    page: 
+      size: Letter
+      orientation: Landscape
+      units: Inches
+      width: 11
+      height: 8.5
+      border-width: 0.5
+      border-color: '#666666'
+
+    page-header: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+      page-header-text: Chart [GRID]
 
     column-headings: 
       font: Helvetica
@@ -970,10 +2400,10 @@ dynamic-actions:
       fire-on-initialization: false
 
 processes: 
-- # ====== Process: Metrics [GRID] - Save Interactive Grid Data 
+- # ====== Process: SAVE_METRICS ===============================
   id: 7629093021981640
   identification: 
-    name: Metrics [GRID] - Save Interactive Grid Data
+    name: SAVE_METRICS
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
     editable-region: Metrics [GRID] # 7628269625981632
@@ -981,7 +2411,7 @@ processes:
   settings: 
     target-type: Region Source
     prevent-lost-updates: true
-    lock-row: Yes
+    lock-row: No
     return-primary-key(s)-after-insert: true
 
   execution: 
@@ -995,10 +2425,10 @@ processes:
   server-side-condition: 
     execution-scope: For Created and Modified Rows
 
-- # ====== Process: Colors [GRID] - Save Interactive Grid Data =
+- # ====== Process: SAVE_COLORS ================================
   id: 7761370658148787
   identification: 
-    name: Colors [GRID] - Save Interactive Grid Data
+    name: SAVE_COLORS
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
     editable-region: Colors [GRID] # 121055316094902755
@@ -1006,7 +2436,7 @@ processes:
   settings: 
     target-type: Region Source
     prevent-lost-updates: true
-    lock-row: Yes
+    lock-row: No
     return-primary-key(s)-after-insert: true
 
   execution: 
