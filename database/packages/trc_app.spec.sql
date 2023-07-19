@@ -11,6 +11,10 @@ CREATE OR REPLACE PACKAGE trc_app AS
 
     PROCEDURE init_headers;
 
+
+
+    PROCEDURE refresh_mv;
+
 END;
 /
 

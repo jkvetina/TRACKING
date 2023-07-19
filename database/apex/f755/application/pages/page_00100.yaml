@@ -159,6 +159,14 @@ regions:
     region-display-selector: true
     exclude-title-from-translation: false
 
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      :P100_APPLICATION_ID    IS NOT NULL
+      OR :P100_PAGE_ID        IS NOT NULL
+      OR :P100_USER_ID        IS NOT NULL
+
   server-cache: 
     caching: Disabled
 
@@ -1637,7 +1645,7 @@ regions:
       value-identifies-row: false
 
     validation: 
-      value-required: false
+      value-required: true
 
     source: 
       type: Database Column
@@ -1660,6 +1668,10 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
+
+    server-side-condition: 
+      type: Item is NULL
+      item: P100_APPLICATION_ID
 
   - # ====== Column: PAGE_ID =====================================
     id: 110467507474759063
@@ -5210,6 +5222,73 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P100_SESSION_ID ==========================
+  id: 8491357048822909
+  identification: 
+    name: P100_SESSION_ID
+    type: Select List
+
+  label: 
+    label: Session Id
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 60
+    region: Tracking Apps # 110466466235759052
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 124365926097403332
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_ACTIVITY_SESSIONS # 8578536440026808
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P100_PAGE_ID
+    items-to-submit: 
+    - P100_APPLICATION_ID
+    - P100_PAGE_ID
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P100_APPLICATION_ID ======================
   id: 110467654668759086
   identification: 
@@ -5248,7 +5327,7 @@ page-items:
   list-of-values: 
     type: Shared Component
     list-of-values: LOV_ACTIVITY_APPS # 108023006483134319
-    display-extra-values: true
+    display-extra-values: false
     display-null-value: true
 
   advanced: 
@@ -5307,7 +5386,7 @@ page-items:
   list-of-values: 
     type: Shared Component
     list-of-values: LOV_ACTIVITY_PAGES # 99912103699010580
-    display-extra-values: true
+    display-extra-values: false
     display-null-value: true
 
   cascading-list-of-values: 
@@ -5373,7 +5452,7 @@ page-items:
   list-of-values: 
     type: Shared Component
     list-of-values: LOV_ACTIVITY_METRIC # 53420687070534646
-    display-extra-values: true
+    display-extra-values: false
     display-null-value: false
 
   advanced: 
@@ -5432,7 +5511,7 @@ page-items:
   list-of-values: 
     type: Shared Component
     list-of-values: LOV_ACTIVITY_SOURCE # 53420944523553750
-    display-extra-values: true
+    display-extra-values: false
     display-null-value: false
 
   advanced: 
@@ -5491,7 +5570,7 @@ page-items:
   list-of-values: 
     type: Shared Component
     list-of-values: LOV_ACTIVITY_USERS # 101131095244437096
-    display-extra-values: true
+    display-extra-values: false
     display-null-value: true
 
   cascading-list-of-values: 
@@ -5528,7 +5607,7 @@ buttons:
     label: Submit
 
   layout: 
-    sequence: 60
+    sequence: 70
     region: Tracking Apps # 110466466235759052
     position: BODY
     start-new-layout: false
@@ -5556,6 +5635,33 @@ buttons:
 
   configuration: 
     build-option: NEVER # 101866716812096551
+
+- # ====== Button: REFRESH_MV ==================================
+  id: 7958417529857428
+  identification: 
+    button-name: REFRESH_MV
+    label: Refresh MV
+
+  layout: 
+    sequence: 70
+    region: Tracking Apps # 110466466235759052
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 124368330622403335
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_FILTERS =====================
@@ -5612,4 +5718,28 @@ processes:
     sequence: 10
     point: Before Header
     run-process: Once Per Page Visit (default)
+
+- # ====== Process: REFRESH_MV =================================
+  id: 7958551475857429
+  identification: 
+    name: REFRESH_MV
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TRC_APP
+    procedure-or-function: REFRESH_MV
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: REFRESH_MV # 7958417529857428
 

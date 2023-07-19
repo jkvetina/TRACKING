@@ -17,6 +17,23 @@
     default-sort: NAME
     sort-direction: Ascending (Nulls Last)
 
+- # ====== List of Values: LOV_ACTIVITY_SESSIONS ===============
+  id: 8578536440026808
+  identification: 
+    name: LOV_ACTIVITY_SESSIONS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TRC_LOV_ACTIVITY_SESSIONS_V
+
+  column-mapping: 
+    return: APEX_SESSION_ID
+    display: APEX_SESSION_ID
+    default-sort: APEX_SESSION_ID
+    sort-direction: Ascending (Nulls Last)
+
 - # ====== List of Values: LOV_ACTIVITY_METRIC =================
   id: 53420687070534646
   identification: 
