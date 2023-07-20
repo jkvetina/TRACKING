@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   20:05 Středa Červenec 19, 2023
+--   Date and Time:   11:52 Čtvrtek Červenec 20, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -45,13 +45,12 @@ prompt APPLICATION 755 - Tracking Apps
 --       Dynamic Actions:          3
 --     Shared Components:
 --       Logic:
---         Processes:              2
 --         Build Options:          1
 --       Navigation:
 --         Lists:                  1
 --       Security:
 --         Authentication:         3
---         Authorization:          5
+--         Authorization:          1
 --       User Interface:
 --         Themes:                 1
 --         Templates:
@@ -114,7 +113,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-07-19'
+,p_flow_version=>'2023-07-20'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -572,78 +571,6 @@ wwv_flow_imp_shared.create_plugin_setting(
 );
 end;
 /
-prompt --application/shared_components/security/authorizations/is_user
-begin
-wwv_flow_imp_shared.create_security_scheme(
- p_id=>wwv_flow_imp.id(100594289879618211)  -- IS_USER
-,p_name=>'IS_USER'
-,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN tsk_auth.is_user (',
-'    in_component_id     => :APP_COMPONENT_ID,',
-'    in_component_type   => :APP_COMPONENT_TYPE,',
-'    in_component_name   => :APP_COMPONENT_NAME,',
-'    in_action           => NULL',
-') = ''Y'';'))
-,p_error_message=>'ACCESS_DENIED|IS_USER'
-,p_caching=>'NOCACHE'
-);
-end;
-/
-prompt --application/shared_components/security/authorizations/is_user_c
-begin
-wwv_flow_imp_shared.create_security_scheme(
- p_id=>wwv_flow_imp.id(101094708773456282)  -- IS_USER_C
-,p_name=>'IS_USER_C'
-,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN tsk_auth.is_user (',
-'    in_component_id     => :APP_COMPONENT_ID,',
-'    in_component_type   => :APP_COMPONENT_TYPE,',
-'    in_component_name   => :APP_COMPONENT_NAME,',
-'    in_action           => ''C''',
-') = ''Y'';'))
-,p_error_message=>'ACCESS_DENIED|IS_USER_C'
-,p_caching=>'NOCACHE'
-);
-end;
-/
-prompt --application/shared_components/security/authorizations/is_user_u
-begin
-wwv_flow_imp_shared.create_security_scheme(
- p_id=>wwv_flow_imp.id(101094965182461804)  -- IS_USER_U
-,p_name=>'IS_USER_U'
-,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN tsk_auth.is_user (',
-'    in_component_id     => :APP_COMPONENT_ID,',
-'    in_component_type   => :APP_COMPONENT_TYPE,',
-'    in_component_name   => :APP_COMPONENT_NAME,',
-'    in_action           => ''U''',
-') = ''Y'';'))
-,p_error_message=>'ACCESS_DENIED|IS_USER_U'
-,p_caching=>'NOCACHE'
-);
-end;
-/
-prompt --application/shared_components/security/authorizations/is_user_d
-begin
-wwv_flow_imp_shared.create_security_scheme(
- p_id=>wwv_flow_imp.id(101095298530465434)  -- IS_USER_D
-,p_name=>'IS_USER_D'
-,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN tsk_auth.is_user (',
-'    in_component_id     => :APP_COMPONENT_ID,',
-'    in_component_type   => :APP_COMPONENT_TYPE,',
-'    in_component_name   => :APP_COMPONENT_NAME,',
-'    in_action           => ''D''',
-') = ''Y'';'))
-,p_error_message=>'ACCESS_DENIED|IS_USER_D'
-,p_caching=>'NOCACHE'
-);
-end;
-/
 prompt --application/shared_components/security/authorizations/is_developer
 begin
 wwv_flow_imp_shared.create_security_scheme(
@@ -659,32 +586,6 @@ end;
 prompt --application/shared_components/navigation/navigation_bar
 begin
 null;
-end;
-/
-prompt --application/shared_components/logic/application_processes/after_auth
-begin
-wwv_flow_imp_shared.create_flow_process(
- p_id=>wwv_flow_imp.id(88496558468255896)
-,p_process_sequence=>1
-,p_process_point=>'AFTER_LOGIN'
-,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'AFTER_AUTH'
-,p_process_sql_clob=>'tsk_auth.after_auth(:APP_USER);'
-,p_process_clob_language=>'PLSQL'
-);
-end;
-/
-prompt --application/shared_components/logic/application_processes/init_defaults
-begin
-wwv_flow_imp_shared.create_flow_process(
- p_id=>wwv_flow_imp.id(97494832187460668)
-,p_process_sequence=>1
-,p_process_point=>'BEFORE_HEADER'
-,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'INIT_DEFAULTS'
-,p_process_sql_clob=>'tsk_app.init_defaults();'
-,p_process_clob_language=>'PLSQL'
-);
 end;
 /
 prompt --application/shared_components/logic/application_settings
