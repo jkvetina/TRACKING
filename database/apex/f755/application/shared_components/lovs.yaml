@@ -33,6 +33,8 @@
     display: APEX_SESSION_ID
     default-sort: APEX_SESSION_ID
     sort-direction: Ascending (Nulls Last)
+    group: VIEW_DATE
+    group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_ACTIVITY_METRIC =================
   id: 53420687070534646

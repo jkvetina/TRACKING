@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   19:08 Středa Červenec 19, 2023
+--   Date and Time:   20:05 Středa Červenec 19, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -763,9 +763,12 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_lov_name=>'LOV_ACTIVITY_SESSIONS'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
+,p_use_local_sync_table=>false
 ,p_query_table=>'TRC_LOV_ACTIVITY_SESSIONS_V'
 ,p_return_column_name=>'APEX_SESSION_ID'
 ,p_display_column_name=>'APEX_SESSION_ID'
+,p_group_column_name=>'VIEW_DATE'
+,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'APEX_SESSION_ID'
 ,p_default_sort_direction=>'ASC'
 );

@@ -7,6 +7,7 @@ WITH x AS (
     FROM DUAL
 )
 SELECT
+    TRUNC(a.view_date) AS view_date,
     a.apex_session_id
 FROM trc_activity_log_v a
 CROSS JOIN x
@@ -15,6 +16,7 @@ WHERE 1 = 1
     AND (a.page_id = x.page_id          OR x.page_id IS NULL)
     AND (a.apex_user = x.user_id        OR x.user_id IS NULL)
 GROUP BY
+    TRUNC(a.view_date),
     a.apex_session_id;
 --
 COMMENT ON TABLE trc_lov_activity_sessions_v IS '';
