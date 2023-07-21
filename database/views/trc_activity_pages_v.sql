@@ -4,7 +4,9 @@ SELECT
     p.application_id,
     p.application_name,
     p.page_id,
-    p.page_name
+    p.page_name,
+    p.page_alias,
+    p.page_group
 FROM apex_application_pages p
 WHERE 1 = 1
     AND p.application_name  IS NOT NULL
@@ -15,7 +17,9 @@ GROUP BY
     p.application_id,
     p.application_name,
     p.page_id,
-    p.page_name;
+    p.page_name,
+    p.page_alias,
+    p.page_group;
 --
 COMMENT ON TABLE trc_activity_pages_v IS '';
 
