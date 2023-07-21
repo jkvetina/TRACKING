@@ -22,7 +22,15 @@ USING (
     SELECT 'COLOR_USERS' AS name, 1 AS treshold, '#4e7779' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
     SELECT 'COLOR_USERS' AS name, 2 AS treshold, '#90c7ca' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
     SELECT 'COLOR_USERS' AS name, 5 AS treshold, '#c3ba9b' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
-    SELECT 'COLOR_USERS' AS name, 10 AS treshold, '#7e6d53' AS color_bg, '#000000' AS color_text FROM DUAL
+    SELECT 'COLOR_USERS' AS name, 10 AS treshold, '#7e6d53' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT1' AS name, 1 AS treshold, '#235f83' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT1' AS name, 2 AS treshold, '#8eb3aa' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT1' AS name, 3 AS treshold, '#e9cf87' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT1' AS name, 5 AS treshold, '#a2885e' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT2' AS name, 1 AS treshold, '#bbcfd7' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT2' AS name, 2 AS treshold, '#d2c8bc' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT2' AS name, 5 AS treshold, '#ba9a88' AS color_bg, '#000000' AS color_text FROM DUAL UNION ALL
+    SELECT 'COLOR_USERS_ALT2' AS name, 10 AS treshold, '#ac7e62' AS color_bg, '#000000' AS color_text FROM DUAL
 ) s
 ON (
     t.name = s.name

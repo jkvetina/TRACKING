@@ -10,7 +10,7 @@ DELETE FROM trc_navigation;
 MERGE INTO trc_navigation t
 USING (
     SELECT 0 AS page_id, NULL AS parent_id, NULL AS is_hidden, NULL AS is_reset, 666 AS order# FROM DUAL UNION ALL
-    SELECT 100 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 100 AS order# FROM DUAL UNION ALL
+    SELECT 100 AS page_id, NULL AS parent_id, NULL AS is_hidden, NULL AS is_reset, 100 AS order# FROM DUAL UNION ALL
     SELECT 800 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 800 AS order# FROM DUAL UNION ALL
     SELECT 9999 AS page_id, NULL AS parent_id, NULL AS is_hidden, NULL AS is_reset, 999 AS order# FROM DUAL
 ) s

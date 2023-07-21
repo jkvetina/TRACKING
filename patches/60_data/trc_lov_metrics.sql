@@ -15,7 +15,7 @@ USING (
     SELECT 'MEDIAN_TIME' AS metric_code, 'Median Time' AS metric_name, 'COLOR_TIME' AS color_name, 50 AS order# FROM DUAL UNION ALL
     SELECT 'MIN_TIME' AS metric_code, 'Min Time' AS metric_name, 'COLOR_TIME' AS color_name, 60 AS order# FROM DUAL UNION ALL
     SELECT 'SESSIONS' AS metric_code, 'Sessions' AS metric_name, 'COLOR_ACTIVITY' AS color_name, 30 AS order# FROM DUAL UNION ALL
-    SELECT 'USERS' AS metric_code, 'Users' AS metric_name, 'COLOR_USERS' AS color_name, 20 AS order# FROM DUAL
+    SELECT 'USERS' AS metric_code, 'Users' AS metric_name, 'COLOR_USERS_ALT2' AS color_name, 20 AS order# FROM DUAL
 ) s
 ON (
     t.metric_code = s.metric_code
