@@ -1,6 +1,6 @@
 CREATE OR REPLACE PACKAGE BODY trc_app AS
 
-    c_show_days CONSTANT PLS_INTEGER := 14;
+    c_show_days CONSTANT PLS_INTEGER := 31;
 
 
 

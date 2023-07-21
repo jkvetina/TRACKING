@@ -13,7 +13,7 @@ a AS (
     CROSS JOIN x
     WHERE 1 = 1
         AND (a.application_id = x.app_id    OR x.app_id IS NULL)
-        AND (a.page_id = x.page_id          OR x.page_id IS NULL)
+        AND (a.page_id = x.page_id          OR NULLIF(x.page_id, 0) IS NULL)
     GROUP BY
         a.apex_user
 )
@@ -34,5 +34,6 @@ FROM (
     FROM a
 ) a
 WHERE a.r# <= 10;
-
+--
+COMMENT ON TABLE trc_lov_activity_users_v IS '';
 

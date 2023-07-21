@@ -13,7 +13,7 @@ FROM trc_activity_log_v a
 CROSS JOIN x
 WHERE 1 = 1
     AND (a.application_id = x.app_id    OR x.app_id IS NULL)
-    AND (a.page_id = x.page_id          OR x.page_id IS NULL)
+    AND (a.page_id = x.page_id          OR NULLIF(x.page_id, 0) IS NULL)
     AND (a.apex_user = x.user_id        OR x.user_id IS NULL)
 GROUP BY
     TRUNC(a.view_date),
