@@ -8,11 +8,6 @@ WITH x AS (
         core.get_number_item('$SESSION_ID') AS session_id,
         core.get_item('$METRIC')            AS metric,
         --
-        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'rendering:'), 'rendering:')     > 0 THEN 'Y' END AS count_rendering,
-        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'processing:'), 'processing:')   > 0 THEN 'Y' END AS count_processing,
-        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'ajax:'), 'ajax:')               > 0 THEN 'Y' END AS count_ajax,
-        CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'auth:'), 'auth:')               > 0 THEN 'Y' END AS count_auth,
-        --
         NVL(m.color_name, 'COLOR_' || core.get_item('$METRIC')) AS color,
         trc_app.get_offset() AS day_offset  -- to align with week days
     FROM DUAL
@@ -25,42 +20,12 @@ p AS (
         p.page_id,
         p.page_name,
         p.page_alias,
-        p.page_group
+        p.page_group,
+        x.metric
     FROM trc_activity_pages_v p
     JOIN x
         ON (x.app_id        = p.application_id  OR x.app_id IS NULL)
-        AND (x.page_id      = p.page_id         OR x.page_id IS NULL)
-    GROUP BY
-        p.application_id,
-        p.page_id,
-        p.page_name,
-        p.page_alias,
-        p.page_group
-),
-a AS (
-    SELECT /*+ MATERIALIZE */
-        a.application_id,
-        a.page_id,
-        a.page_name,
-        TRUNC(a.view_date)      AS view_date,
-        a.page_view_type,
-        a.elapsed_time,
-        a.apex_user,
-        a.apex_session_id,
-        x.metric,
-        x.day_offset
-    FROM trc_activity_log_v a
-    JOIN x
-        ON x.app_id         = a.application_id
-        AND (x.page_id      = a.page_id         OR x.page_id IS NULL)
-        AND (x.user_id      = a.apex_user       OR x.user_id IS NULL)
-    WHERE 1 = 1
-        AND (
-            (x.count_rendering  = 'Y' AND a.page_view_type = 'Rendering') OR
-            (x.count_processing = 'Y' AND a.page_view_type = 'Processing') OR
-            (x.count_ajax       = 'Y' AND a.page_view_type = 'Ajax') OR
-            (x.count_auth       = 'Y' AND a.page_view_type = 'Authentication Callback')
-        )
+        AND (x.page_id      = p.page_id         OR NULLIF(x.page_id, 0) IS NULL)
 ),
 s AS (
     SELECT /*+ MATERIALIZE */
@@ -71,8 +36,8 @@ s AS (
         p.page_group,
         a.view_date,
         --
-        CASE a.metric
-            WHEN 'ACTIVITY'     THEN COUNT(*)
+        CASE p.metric
+            WHEN 'ACTIVITY'     THEN COUNT(a.page_id)
             WHEN 'USERS'        THEN COUNT(DISTINCT a.apex_user)
             WHEN 'SESSIONS'     THEN COUNT(DISTINCT a.apex_session_id)
             WHEN 'AVG_TIME'     THEN ROUND(AVG(a.elapsed_time), 2)
@@ -81,7 +46,8 @@ s AS (
             WHEN 'MAX_TIME'     THEN ROUND(MAX(a.elapsed_time), 2)
             END AS value
     FROM p
-    LEFT JOIN a
+    CROSS JOIN x
+    LEFT JOIN trc_activity_base_v a
         ON a.application_id     = p.application_id
         AND a.page_id           = p.page_id
     GROUP BY
@@ -91,7 +57,13 @@ s AS (
         p.page_alias,
         p.page_group,
         a.view_date,
-        a.metric
+        p.metric,
+        x.page_id
+    HAVING (
+        (x.page_id = 0 AND COUNT(a.page_id) > 0)
+        OR (p.page_id = NULLIF(x.page_id, 0))
+        OR x.page_id IS NULL
+    )
 ),
 t AS (
     SELECT
