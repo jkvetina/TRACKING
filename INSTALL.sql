@@ -18,15 +18,19 @@
 --
 -- OBJECTS
 --
-@@"./database/packages/trc_app.spec.sql"
+@@"./database/views/trc_activity_pages_v.sql"
 @@"./database/views/trc_lov_activity_source_v.sql"
 @@"./database/views/trc_activity_log_v.sql"
 @@"./database/views/trc_lov_activity_metric_v.sql"
+@@"./database/packages/trc_app.spec.sql"
 @@"./database/views/trc_lov_activity_apps_v.sql"
 @@"./database/views/trc_lov_activity_pages_v.sql"
+@@"./database/views/trc_lov_activity_sessions_v.sql"
 @@"./database/views/trc_lov_activity_users_v.sql"
 @@"./database/views/trc_navigation_top_v.sql"
 @@"./database/packages/trc_app.sql"
+@@"./database/views/trc_activity_base_v.sql"
+@@"./database/views/trc_color_preview_v.sql"
 @@"./database/views/trc_activity_chart_v.sql"
 
 --
