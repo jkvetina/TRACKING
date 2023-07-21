@@ -13,6 +13,11 @@ CREATE OR REPLACE PACKAGE trc_app AS
 
 
 
+    FUNCTION get_offset
+    RETURN NUMBER;
+
+
+
     PROCEDURE refresh_mv;
 
 END;

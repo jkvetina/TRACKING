@@ -12,7 +12,8 @@ WITH x AS (
         CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'ajax:'), 'ajax:')               > 0 THEN 'Y' END AS count_ajax,
         CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'auth:'), 'auth:')               > 0 THEN 'Y' END AS count_auth,
         --
-        NVL(m.color_name, 'COLOR_' || core.get_item('$METRIC')) AS color
+        NVL(m.color_name, 'COLOR_' || core.get_item('$METRIC')) AS color,
+        trc_app.get_offset() AS day_offset  -- to align with week days
     FROM DUAL
     LEFT JOIN trc_lov_metrics m
         ON m.metric_code = core.get_item('$METRIC')
@@ -41,7 +42,8 @@ a AS (
         a.elapsed_time,
         a.apex_user,
         a.apex_session_id,
-        x.metric
+        x.metric,
+        x.day_offset
     FROM trc_activity_log_v a
     JOIN x
         ON x.app_id         = a.application_id
@@ -88,37 +90,43 @@ t AS (
         s.page_id,
         s.page_name,
         --
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today      THEN s.value END, 0)), 0) AS t00,       -- today
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  1 THEN s.value END, 0)), 0) AS t01,       -- yesterday
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  2 THEN s.value END, 0)), 0) AS t02,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  3 THEN s.value END, 0)), 0) AS t03,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  4 THEN s.value END, 0)), 0) AS t04,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  5 THEN s.value END, 0)), 0) AS t05,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  6 THEN s.value END, 0)), 0) AS t06,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  7 THEN s.value END, 0)), 0) AS t07,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  8 THEN s.value END, 0)), 0) AS t08,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  9 THEN s.value END, 0)), 0) AS t09,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 10 THEN s.value END, 0)), 0) AS t10,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 11 THEN s.value END, 0)), 0) AS t11,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 12 THEN s.value END, 0)), 0) AS t12,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 13 THEN s.value END, 0)), 0) AS t13,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 14 THEN s.value END, 0)), 0) AS t14,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 15 THEN s.value END, 0)), 0) AS t15,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 16 THEN s.value END, 0)), 0) AS t16,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 17 THEN s.value END, 0)), 0) AS t17,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 18 THEN s.value END, 0)), 0) AS t18,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 19 THEN s.value END, 0)), 0) AS t19,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 20 THEN s.value END, 0)), 0) AS t20,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 21 THEN s.value END, 0)), 0) AS t21,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 22 THEN s.value END, 0)), 0) AS t22,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 23 THEN s.value END, 0)), 0) AS t23,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 24 THEN s.value END, 0)), 0) AS t24,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 25 THEN s.value END, 0)), 0) AS t25,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 26 THEN s.value END, 0)), 0) AS t26,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 27 THEN s.value END, 0)), 0) AS t27,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 28 THEN s.value END, 0)), 0) AS t28,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 29 THEN s.value END, 0)), 0) AS t29,
-        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 30 THEN s.value END, 0)), 0) AS t30
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today      + day_offset THEN s.value END, 0)), 0) AS t00,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  1 + day_offset THEN s.value END, 0)), 0) AS t01,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  2 + day_offset THEN s.value END, 0)), 0) AS t02,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  3 + day_offset THEN s.value END, 0)), 0) AS t03,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  4 + day_offset THEN s.value END, 0)), 0) AS t04,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  5 + day_offset THEN s.value END, 0)), 0) AS t05,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  6 + day_offset THEN s.value END, 0)), 0) AS t06,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  7 + day_offset THEN s.value END, 0)), 0) AS t07,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  8 + day_offset THEN s.value END, 0)), 0) AS t08,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  9 + day_offset THEN s.value END, 0)), 0) AS t09,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 10 + day_offset THEN s.value END, 0)), 0) AS t10,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 11 + day_offset THEN s.value END, 0)), 0) AS t11,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 12 + day_offset THEN s.value END, 0)), 0) AS t12,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 13 + day_offset THEN s.value END, 0)), 0) AS t13,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 14 + day_offset THEN s.value END, 0)), 0) AS t14,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 15 + day_offset THEN s.value END, 0)), 0) AS t15,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 16 + day_offset THEN s.value END, 0)), 0) AS t16,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 17 + day_offset THEN s.value END, 0)), 0) AS t17,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 18 + day_offset THEN s.value END, 0)), 0) AS t18,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 19 + day_offset THEN s.value END, 0)), 0) AS t19,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 20 + day_offset THEN s.value END, 0)), 0) AS t20,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 21 + day_offset THEN s.value END, 0)), 0) AS t21,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 22 + day_offset THEN s.value END, 0)), 0) AS t22,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 23 + day_offset THEN s.value END, 0)), 0) AS t23,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 24 + day_offset THEN s.value END, 0)), 0) AS t24,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 25 + day_offset THEN s.value END, 0)), 0) AS t25,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 26 + day_offset THEN s.value END, 0)), 0) AS t26,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 27 + day_offset THEN s.value END, 0)), 0) AS t27,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 28 + day_offset THEN s.value END, 0)), 0) AS t28,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 29 + day_offset THEN s.value END, 0)), 0) AS t29,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 30 + day_offset THEN s.value END, 0)), 0) AS t30,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 31 + day_offset THEN s.value END, 0)), 0) AS t31,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 32 + day_offset THEN s.value END, 0)), 0) AS t32,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 33 + day_offset THEN s.value END, 0)), 0) AS t33,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 34 + day_offset THEN s.value END, 0)), 0) AS t34,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 35 + day_offset THEN s.value END, 0)), 0) AS t35,
+        NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 36 + day_offset THEN s.value END, 0)), 0) AS t36
     FROM s
     CROSS JOIN x
     GROUP BY
@@ -130,37 +138,11 @@ SELECT
     t.application_id,
     t.page_id,
     t.page_name,
-    t.t00           AS today,
-    t.t01,
-    t.t02,
-    t.t03,
-    t.t04,
-    t.t05,
-    t.t06,
-    t.t07,
-    t.t08,
-    t.t09,
-    t.t10,
-    t.t11,
-    t.t12,
-    t.t13,
-    t.t14,
-    t.t15,
-    t.t16,
-    t.t17,
-    t.t18,
-    t.t19,
-    t.t20,
-    t.t21,
-    t.t22,
-    t.t23,
-    t.t24,
-    t.t25,
-    t.t26,
-    t.t27,
-    t.t28,
-    t.t29,
-    t.t30,
+    --
+    t.t00, t.t01, t.t02, t.t03, t.t04, t.t05, t.t06, t.t07, t.t08, t.t09,
+    t.t10, t.t11, t.t12, t.t13, t.t14, t.t15, t.t16, t.t17, t.t18, t.t19,
+    t.t20, t.t21, t.t22, t.t23, t.t24, t.t25, t.t26, t.t27, t.t28, t.t29,
+    t.t30, t.t31, t.t32, t.t33, t.t34, t.t35, t.t36,
     --
     trc_app.get_value_color(x.color, t.t00) AS t00_color,   trc_app.get_value_color(x.color, t.t00, 'Y') AS t00_text,
     trc_app.get_value_color(x.color, t.t01) AS t01_color,   trc_app.get_value_color(x.color, t.t01, 'Y') AS t01_text,
@@ -192,7 +174,13 @@ SELECT
     trc_app.get_value_color(x.color, t.t27) AS t27_color,   trc_app.get_value_color(x.color, t.t27, 'Y') AS t27_text,
     trc_app.get_value_color(x.color, t.t28) AS t28_color,   trc_app.get_value_color(x.color, t.t28, 'Y') AS t28_text,
     trc_app.get_value_color(x.color, t.t29) AS t29_color,   trc_app.get_value_color(x.color, t.t29, 'Y') AS t29_text,
-    trc_app.get_value_color(x.color, t.t30) AS t30_color,   trc_app.get_value_color(x.color, t.t30, 'Y') AS t30_text
+    trc_app.get_value_color(x.color, t.t30) AS t30_color,   trc_app.get_value_color(x.color, t.t30, 'Y') AS t30_text,
+    trc_app.get_value_color(x.color, t.t31) AS t31_color,   trc_app.get_value_color(x.color, t.t31, 'Y') AS t31_text,
+    trc_app.get_value_color(x.color, t.t32) AS t32_color,   trc_app.get_value_color(x.color, t.t32, 'Y') AS t32_text,
+    trc_app.get_value_color(x.color, t.t33) AS t33_color,   trc_app.get_value_color(x.color, t.t33, 'Y') AS t33_text,
+    trc_app.get_value_color(x.color, t.t34) AS t34_color,   trc_app.get_value_color(x.color, t.t34, 'Y') AS t34_text,
+    trc_app.get_value_color(x.color, t.t35) AS t35_color,   trc_app.get_value_color(x.color, t.t35, 'Y') AS t35_text,
+    trc_app.get_value_color(x.color, t.t36) AS t36_color,   trc_app.get_value_color(x.color, t.t36, 'Y') AS t36_text
 FROM t
 CROSS JOIN x;
 --
