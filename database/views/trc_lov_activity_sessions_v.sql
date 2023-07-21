@@ -2,7 +2,7 @@ CREATE OR REPLACE FORCE VIEW trc_lov_activity_sessions_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         core.get_item('$APPLICATION_ID')    AS app_id,
-        core.get_item('$PAGE_ID')           AS page_id,
+        core.get_number_item('$PAGE_ID')    AS page_id,
         core.get_item('$USER_ID')           AS user_id
     FROM DUAL
 )

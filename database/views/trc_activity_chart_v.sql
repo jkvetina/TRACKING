@@ -3,8 +3,9 @@ WITH x AS (
     SELECT /*+ MATERIALIZE */
         TRUNC(SYSDATE)                      AS today,
         core.get_item('$APPLICATION_ID')    AS app_id,
-        core.get_item('$PAGE_ID')           AS page_id,
+        core.get_number_item('$PAGE_ID')    AS page_id,
         core.get_item('$USER_ID')           AS user_id,
+        core.get_number_item('$SESSION_ID') AS session_id,
         core.get_item('$METRIC')            AS metric,
         --
         CASE WHEN INSTR(NVL(NULLIF(core.get_item('$SOURCE'), ':'), 'rendering:'), 'rendering:')     > 0 THEN 'Y' END AS count_rendering,
