@@ -102,8 +102,10 @@
   column-mapping: 
     return: APEX_USER
     display: APEX_USER
-    default-sort: APEX_USER
+    default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_ACTIVITY_APPS ===================
   id: 108023006483134319

@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   10:57 Pátek Červenec 21, 2023
+--   Date and Time:   11:23 Pátek Červenec 21, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -702,8 +702,9 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_query_table=>'TRC_LOV_ACTIVITY_USERS_V'
 ,p_return_column_name=>'APEX_USER'
 ,p_display_column_name=>'APEX_USER'
+,p_group_column_name=>'GROUP_NAME'
 ,p_group_sort_direction=>'ASC'
-,p_default_sort_column_name=>'APEX_USER'
+,p_default_sort_column_name=>'ORDER#'
 ,p_default_sort_direction=>'ASC'
 );
 end;
@@ -15476,6 +15477,10 @@ wwv_flow_imp_page.create_region_column_group(
  p_id=>wwv_flow_imp.id(8494314641822939)
 ,p_heading=>'&P100_WEEK_6.'
 );
+wwv_flow_imp_page.create_region_column_group(
+ p_id=>wwv_flow_imp.id(8771996506122237)
+,p_heading=>'Page Info'
+);
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(7627914438981629)
 ,p_name=>'T00_COLOR'
@@ -15920,10 +15925,12 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_TEXT_FIELD'
-,p_heading=>'Page Alias'
+,p_heading=>'Alias'
 ,p_heading_alignment=>'LEFT'
 ,p_display_sequence=>40
 ,p_value_alignment=>'LEFT'
+,p_group_id=>wwv_flow_imp.id(8771996506122237)
+,p_use_group_for=>'BOTH'
 ,p_attribute_05=>'BOTH'
 ,p_is_required=>false
 ,p_max_length=>255
@@ -15949,10 +15956,12 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_TEXT_FIELD'
-,p_heading=>'Page Group'
+,p_heading=>'Group'
 ,p_heading_alignment=>'LEFT'
 ,p_display_sequence=>50
 ,p_value_alignment=>'LEFT'
+,p_group_id=>wwv_flow_imp.id(8771996506122237)
+,p_use_group_for=>'BOTH'
 ,p_attribute_05=>'BOTH'
 ,p_is_required=>false
 ,p_max_length=>255
@@ -16498,6 +16507,9 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_primary_key=>false
 ,p_include_in_export=>false
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(59903326121326329)
 ,p_name=>'T04_TEXT'
@@ -16514,9 +16526,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_primary_key=>false
 ,p_include_in_export=>false
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(59903517058326330)
 ,p_name=>'T05_COLOR'
@@ -16633,10 +16642,12 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'NUMBER'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_NUMBER_FIELD'
-,p_heading=>'Page Id'
+,p_heading=>'Id'
 ,p_heading_alignment=>'RIGHT'
 ,p_display_sequence=>20
 ,p_value_alignment=>'RIGHT'
+,p_group_id=>wwv_flow_imp.id(8771996506122237)
+,p_use_group_for=>'BOTH'
 ,p_attribute_03=>'left'
 ,p_attribute_04=>'decimal'
 ,p_is_required=>true
@@ -16660,10 +16671,12 @@ wwv_flow_imp_page.create_region_column(
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
-,p_heading=>'Page Name'
+,p_heading=>'Name'
 ,p_heading_alignment=>'LEFT'
 ,p_display_sequence=>30
 ,p_value_alignment=>'LEFT'
+,p_group_id=>wwv_flow_imp.id(8771996506122237)
+,p_use_group_for=>'BOTH'
 ,p_attribute_05=>'HTML'
 ,p_enable_filter=>true
 ,p_filter_operators=>'C:S:CASE_INSENSITIVE:REGEXP'
@@ -18316,6 +18329,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(8771739748122235)
 ,p_is_visible=>true
 ,p_is_frozen=>false
+,p_width=>160
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(8856693007370067)
@@ -18678,6 +18692,9 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_is_frozen=>false
 ,p_width=>40
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(113072980802862473)
 ,p_view_id=>wwv_flow_imp.id(113068928840862452)
@@ -18687,9 +18704,6 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_is_frozen=>false
 ,p_width=>40
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(113073972663862475)
 ,p_view_id=>wwv_flow_imp.id(113068928840862452)

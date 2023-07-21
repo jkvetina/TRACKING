@@ -292,6 +292,11 @@ regions:
     heading: 
       heading: '&P100_WEEK_6.'
 
+  - # ====== Column Group: Page Info =============================
+    id: 8771996506122237
+    heading: 
+      heading: Page Info
+
   columns: 
   - # ====== Column: T00_COLOR ===================================
     id: 7627914438981629
@@ -1112,7 +1117,7 @@ regions:
       type: Text Field
 
     heading: 
-      heading: Page Alias
+      heading: Alias
       alignment: start
 
     settings: 
@@ -1122,6 +1127,8 @@ regions:
     layout: 
       sequence: 40
       column-alignment: start
+      group: Page Info # 8771996506122237
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -1167,7 +1174,7 @@ regions:
       type: Text Field
 
     heading: 
-      heading: Page Group
+      heading: Group
       alignment: start
 
     settings: 
@@ -1177,6 +1184,8 @@ regions:
     layout: 
       sequence: 50
       column-alignment: start
+      group: Page Info # 8771996506122237
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -2482,7 +2491,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: Page Id
+      heading: Id
       alignment: end
 
     settings: 
@@ -2492,6 +2501,8 @@ regions:
     layout: 
       sequence: 20
       column-alignment: end
+      group: Page Info # 8771996506122237
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -2529,7 +2540,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Page Name
+      heading: Name
       alignment: start
 
     settings: 
@@ -2538,6 +2549,8 @@ regions:
     layout: 
       sequence: 30
       column-alignment: start
+      group: Page Info # 8771996506122237
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
