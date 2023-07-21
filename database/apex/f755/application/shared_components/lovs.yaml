@@ -85,8 +85,8 @@
     display: PAGE_NAME
     default-sort: PAGE_ID
     sort-direction: Ascending (Nulls Last)
-    group: APPLICATION_ID
-    group-sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls First)
 
 - # ====== List of Values: LOV_ACTIVITY_USERS ==================
   id: 101131095244437096

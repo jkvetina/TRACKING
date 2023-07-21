@@ -20,8 +20,8 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_query_table=>'TRC_LOV_ACTIVITY_PAGES_V'
 ,p_return_column_name=>'PAGE_ID'
 ,p_display_column_name=>'PAGE_NAME'
-,p_group_column_name=>'APPLICATION_ID'
-,p_group_sort_direction=>'ASC'
+,p_group_column_name=>'GROUP_NAME'
+,p_group_sort_direction=>'ASC_NULLS_FIRST'
 ,p_default_sort_column_name=>'PAGE_ID'
 ,p_default_sort_direction=>'ASC'
 );
