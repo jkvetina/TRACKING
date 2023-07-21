@@ -20,7 +20,7 @@ a AS (
 SELECT
     'All'               AS group_name,
     a.apex_user,
-    ROW_NUMBER() OVER(ORDER BY a.apex_user DESC) AS order#
+    ROW_NUMBER() OVER(ORDER BY LOWER(a.apex_user), a.apex_user) AS order#
 FROM a
 UNION ALL
 SELECT
