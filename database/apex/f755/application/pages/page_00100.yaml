@@ -6175,7 +6175,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 60
+    sequence: 70
     region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
@@ -6587,6 +6587,36 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P100_PAGE_ID_OLD =========================
+  id: 49628661352835411
+  identification: 
+    name: P100_PAGE_ID_OLD
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 30
+    region: Tracking Apps # 110466466235759052
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P100_APPLICATION_ID ======================
   id: 110467654668759086
   identification: 
@@ -6685,7 +6715,7 @@ page-items:
     type: Shared Component
     list-of-values: LOV_ACTIVITY_PAGES # 99912103699010580
     display-extra-values: false
-    display-null-value: true
+    display-null-value: false
 
   cascading-list-of-values: 
     parent-item(s): 
@@ -6727,7 +6757,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 30
+    sequence: 40
     region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
@@ -6786,7 +6816,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 40
+    sequence: 50
     region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
@@ -6845,7 +6875,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 50
+    sequence: 60
     region: Tracking Apps # 110466466235759052
     position: BODY
     alignment: Left
@@ -6898,42 +6928,6 @@ page-items:
     restricted-characters: All characters can be saved.
 
 buttons: 
-- # ====== Button: SUBMIT ======================================
-  id: 7688836988708714
-  identification: 
-    button-name: SUBMIT
-    label: Submit
-
-  layout: 
-    sequence: 70
-    region: Tracking Apps # 110466466235759052
-    position: BODY
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    alignment: Left center
-
-  appearance: 
-    button-template: Text # 124368330622403335
-    hot: true
-    template-options: 
-    - '#DEFAULT#'
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-
-  advanced: 
-    custom-attributes: 
-    - 'style="margin-top:'
-    - 0.8rem;"
-
-  configuration: 
-    build-option: NEVER # 101866716812096551
-
 - # ====== Button: REFRESH_MV ==================================
   id: 7958417529857428
   identification: 
@@ -6974,30 +6968,121 @@ dynamic-actions:
     event: EVENT.EVENT.BROWSER.CHANGE
     selection-type: Item(s)
     item(s): 
-    - P100_APPLICATION_ID
     - P100_PAGE_ID
     - P100_METRIC
     - P100_SOURCE
     - P100_USER_ID
+    - P100_SESSION_ID
 
   execution: 
     event-scope: Static
-    type: Immediate
+    type: Debounce
+    time: 100
+    immediate: false
 
   actions: 
-  - # ====== Action: Submit Page =================================
+  - # ====== Action: Refresh =====================================
     id: 7734725799708787
     identification: 
-      action: Submit Page
+      action: Refresh
 
-    settings: 
-      show-processing: true
+    affected-elements: 
+      selection-type: Region
+      region: Chart [GRID] # 110467208557759060
 
     execution: 
       sequence: 10
       event: CHANGED_FILTERS # 7734309452708785
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+- # ====== Dynamic Action: STORE_PAGE_ID =======================
+  id: 49628475872835409
+  identification: 
+    name: STORE_PAGE_ID
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXBEFOREREFRESH
+    selection-type: Item(s)
+    item(s): 
+    - P100_PAGE_ID
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 49628568218835410
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: apex.item(this.triggeringElement.id).getValue()
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P100_PAGE_ID_OLD
+
+    execution: 
+      sequence: 10
+      event: STORE_PAGE_ID # 49628475872835409
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: RESTORE_PAGE_ID =====================
+  id: 49628712840835412
+  identification: 
+    name: RESTORE_PAGE_ID
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
+    selection-type: Item(s)
+    item(s): 
+    - P100_PAGE_ID
+
+  client-side-condition: 
+    type: Item is not null
+    item: P100_PAGE_ID_OLD
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 49628848072835413
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: apex.item('P100_PAGE_ID_OLD').getValue()
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P100_PAGE_ID
+
+    execution: 
+      sequence: 10
+      event: RESTORE_PAGE_ID # 49628712840835412
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
 
 processes: 
 - # ====== Process: INIT_HEADERS ===============================
