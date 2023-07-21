@@ -22,7 +22,9 @@ p AS (
     SELECT /*+ MATERIALIZE */
         p.application_id,
         p.page_id,
-        p.page_name
+        p.page_name,
+        p.page_alias,
+        p.page_group
     FROM trc_activity_pages_v p
     JOIN x
         ON (x.app_id        = p.application_id  OR x.app_id IS NULL)
@@ -30,7 +32,9 @@ p AS (
     GROUP BY
         p.application_id,
         p.page_id,
-        p.page_name
+        p.page_name,
+        p.page_alias,
+        p.page_group
 ),
 a AS (
     SELECT /*+ MATERIALIZE */
@@ -62,6 +66,8 @@ s AS (
         p.application_id,
         p.page_id,
         p.page_name,
+        p.page_alias,
+        p.page_group,
         a.view_date,
         --
         CASE a.metric
@@ -81,6 +87,8 @@ s AS (
         p.application_id,
         p.page_id,
         p.page_name,
+        p.page_alias,
+        p.page_group,
         a.view_date,
         a.metric
 ),
@@ -89,6 +97,8 @@ t AS (
         s.application_id,
         s.page_id,
         s.page_name,
+        s.page_alias,
+        s.page_group,
         --
         NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today      + day_offset THEN s.value END, 0)), 0) AS t00,
         NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today -  1 + day_offset THEN s.value END, 0)), 0) AS t01,
@@ -132,12 +142,16 @@ t AS (
     GROUP BY
         s.application_id,
         s.page_id,
-        s.page_name
+        s.page_name,
+        s.page_alias,
+        s.page_group
 )
 SELECT
     t.application_id,
     t.page_id,
     t.page_name,
+    t.page_alias,
+    t.page_group,
     --
     t.t00, t.t01, t.t02, t.t03, t.t04, t.t05, t.t06, t.t07, t.t08, t.t09,
     t.t10, t.t11, t.t12, t.t13, t.t14, t.t15, t.t16, t.t17, t.t18, t.t19,

@@ -1,5 +1,9 @@
 CREATE OR REPLACE PACKAGE BODY trc_app AS
 
+    c_show_days CONSTANT PLS_INTEGER := 14;
+
+
+
     FUNCTION get_value_color (
         in_name         trc_lov_colors.name%TYPE,
         in_value        trc_lov_colors.treshold%TYPE,
@@ -103,17 +107,17 @@ CREATE OR REPLACE PACKAGE BODY trc_app AS
         FOR i IN 0 .. 36 LOOP
             core.set_item (
                 'P100_HEADER_T' || LPAD(i, 2, '0'),
-                CASE WHEN TRUNC(SYSDATE) - i + v_offset <= TRUNC(SYSDATE) AND i + v_offset - 1 <= 31 + v_offset
+                CASE WHEN TRUNC(SYSDATE) - i + v_offset <= TRUNC(SYSDATE) AND i + v_offset - 1 <= c_show_days + v_offset
                     THEN '<span title="'
                         || REGEXP_REPLACE(TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Day, FMMonth ddth'), '\s+,', ',') || '">'
-                        || SUBSTR(TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Dy'), 1, 1)
+                        || TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'fmdd')
                         || '</span>'
                     END
             );
             --
             IF SUBSTR(TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Dy'), 1, 1) = 'M' THEN
                 v_last_week := NVL(v_last_week, 0) + 1;
-                core.set_item('P100_WEEK_' || v_last_week, TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Mon fmddth') || ' - ' || TO_CHAR(TRUNC(SYSDATE) - i + v_offset + 6, 'fmddth'));
+                core.set_item('P100_WEEK_' || v_last_week, REGEXP_REPLACE(TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Month [IW]'), '\s+,', ','));
             END IF;
         END LOOP;
     END;
