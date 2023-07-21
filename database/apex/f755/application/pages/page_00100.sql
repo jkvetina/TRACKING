@@ -4234,6 +4234,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P100_PAGE_ID_OLD'
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(110466466235759052)
+,p_item_default=>'-1'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_encrypt_session_state_yn=>'N'
@@ -4347,7 +4348,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_triggering_element=>'P100_PAGE_ID,P100_METRIC,P100_SOURCE,P100_USER_ID,P100_SESSION_ID'
 ,p_bind_type=>'bind'
 ,p_execution_type=>'DEBOUNCE'
-,p_execution_time=>100
+,p_execution_time=>200
 ,p_execution_immediate=>false
 ,p_bind_event_type=>'change'
 );
