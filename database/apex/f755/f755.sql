@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   06:31 Sobota Červenec 22, 2023
+--   Date and Time:   07:06 Sobota Červenec 22, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -19669,7 +19669,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_named_lov=>'LOV_ACTIVITY_USERS'
 ,p_lov_display_null=>'YES'
-,p_lov_cascade_parent_items=>'P100_PAGE_ID'
+,p_lov_cascade_parent_items=>'P100_APPLICATION_ID,P100_PAGE_ID'
 ,p_ajax_items_to_submit=>'P100_APPLICATION_ID,P100_PAGE_ID'
 ,p_ajax_optimize_refresh=>'Y'
 ,p_cHeight=>1

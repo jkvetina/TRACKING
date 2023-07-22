@@ -6908,6 +6908,7 @@ page-items:
 
   cascading-list-of-values: 
     parent-item(s): 
+    - P100_APPLICATION_ID
     - P100_PAGE_ID
     items-to-submit: 
     - P100_APPLICATION_ID
