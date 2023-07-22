@@ -6203,10 +6203,11 @@ page-items:
 
   cascading-list-of-values: 
     parent-item(s): 
-    - P100_PAGE_ID
+    - P100_USER_ID
     items-to-submit: 
     - P100_APPLICATION_ID
     - P100_PAGE_ID
+    - P100_USER_ID
     parent-required: true
 
   advanced: 
@@ -6995,10 +6996,34 @@ dynamic-actions:
       region: Chart [GRID] # 110467208557759060
 
     execution: 
+      sequence: 20
+      event: CHANGED_FILTERS # 7734309452708785
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 8772038070122238
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: NULL;
+      items-to-submit: 
+      - P100_APPLICATION_ID
+      - P100_PAGE_ID
+      - P100_METRIC
+      - P100_SOURCE
+      - P100_USER_ID
+      - P100_SESSION_ID
+
+    execution: 
       sequence: 10
       event: CHANGED_FILTERS # 7734309452708785
       fire-when-event-result-is: True
       fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
 
 - # ====== Dynamic Action: STORE_PAGE_ID =======================
   id: 49628475872835409
