@@ -162,6 +162,7 @@ regions:
     table-owner: Parsing Schema
     table-name: TRC_ACTIVITY_CHART_V
     include-rowid-column: false
+    where-clause: 'application_id = :P100_APPLICATION_ID'
     page-items-to-submit: 
     - P100_APPLICATION_ID
     - P100_PAGE_ID
@@ -192,14 +193,6 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
-
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: |
-      :P100_APPLICATION_ID    IS NOT NULL
-      OR :P100_PAGE_ID        IS NOT NULL
-      OR :P100_USER_ID        IS NOT NULL
 
   server-cache: 
     caching: Disabled

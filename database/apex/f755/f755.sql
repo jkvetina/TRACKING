@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   07:06 Sobota Červenec 22, 2023
+--   Date and Time:   16:35 Úterý Červenec 25, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -113,7 +113,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-07-22'
+,p_flow_version=>'2023-07-25'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -15414,15 +15414,10 @@ wwv_flow_imp_page.create_page_plug(
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TRC_ACTIVITY_CHART_V'
+,p_query_where=>'application_id = :P100_APPLICATION_ID'
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
 ,p_ajax_items_to_submit=>'P100_APPLICATION_ID,P100_PAGE_ID,P100_METRIC,P100_SOURCE,P100_USER_ID'
-,p_plug_display_condition_type=>'EXPRESSION'
-,p_plug_display_when_condition=>wwv_flow_string.join(wwv_flow_t_varchar2(
-':P100_APPLICATION_ID    IS NOT NULL',
-'OR :P100_PAGE_ID        IS NOT NULL',
-'OR :P100_USER_ID        IS NOT NULL'))
-,p_plug_display_when_cond2=>'PLSQL'
 ,p_prn_content_disposition=>'ATTACHMENT'
 ,p_prn_units=>'INCHES'
 ,p_prn_paper_size=>'LETTER'

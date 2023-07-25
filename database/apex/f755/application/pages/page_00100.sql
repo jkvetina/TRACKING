@@ -45,15 +45,10 @@ wwv_flow_imp_page.create_page_plug(
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TRC_ACTIVITY_CHART_V'
+,p_query_where=>'application_id = :P100_APPLICATION_ID'
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
 ,p_ajax_items_to_submit=>'P100_APPLICATION_ID,P100_PAGE_ID,P100_METRIC,P100_SOURCE,P100_USER_ID'
-,p_plug_display_condition_type=>'EXPRESSION'
-,p_plug_display_when_condition=>wwv_flow_string.join(wwv_flow_t_varchar2(
-':P100_APPLICATION_ID    IS NOT NULL',
-'OR :P100_PAGE_ID        IS NOT NULL',
-'OR :P100_USER_ID        IS NOT NULL'))
-,p_plug_display_when_cond2=>'PLSQL'
 ,p_prn_content_disposition=>'ATTACHMENT'
 ,p_prn_units=>'INCHES'
 ,p_prn_paper_size=>'LETTER'
@@ -1122,18 +1117,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_primary_key=>false
 ,p_include_in_export=>false
 );
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.0'
-,p_default_workspace_id=>8506563800894011
-,p_default_application_id=>755
-,p_default_id_offset=>138245292394615020
-,p_default_owner=>'APPS'
-);
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(59903311035326328)
 ,p_name=>'T04_COLOR'
@@ -1149,6 +1132,18 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_sort_group=>false
 ,p_is_primary_key=>false
 ,p_include_in_export=>false
+);
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.0'
+,p_default_workspace_id=>8506563800894011
+,p_default_application_id=>755
+,p_default_id_offset=>138245292394615020
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(59903326121326329)
