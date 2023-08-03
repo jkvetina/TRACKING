@@ -6951,7 +6951,7 @@ buttons:
 
   behavior: 
     action: Submit Page
-    execute-validations: true
+    execute-validations: false
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
