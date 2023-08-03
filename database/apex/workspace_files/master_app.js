@@ -1,7 +1,28 @@
 //
+// WAIT FOR ELEMENT TO EXIST
+//
+const wait_for_element = function(search, start, fn, disconnect) {
+    var ob  = new MutationObserver(function(mutations) {
+        if ($(search).length) {
+            fn(search, start);
+            if (disconnect) {
+                observer.disconnect();  // keep observing
+            }
+        }
+    });
+    //
+    ob.observe(document.getElementById(start), {
+        childList: true,
+        subtree: true
+    });
+};
+
+
+
+//
 // COPY TO CLIPBOARD
 //
-var copy_to_clipboard = function (text) {
+const copy_to_clipboard = function (text) {
     var dummy = document.createElement('textarea');
     document.body.appendChild(dummy);
     dummy.value = text;
@@ -16,10 +37,17 @@ var copy_to_clipboard = function (text) {
 // COPY GRID CELL - ATTACH ONLY TO GRIDS
 //
 /*
-document.addEventListener('copy', (event) => {
-    event.clipboardData.setData('text/plain', $(document.activeElement)[0].innerText || window.getSelection());
-    event.preventDefault();
-});*/
+const attach_copy_to_grid = function (el) {
+    console.log('ADDING...', el);
+    $(el).one('copy', (event) => {
+        console.log('ATTACHED');
+        event.clipboardData.setData('text/plain', $(document.activeElement)[0].innerText || window.getSelection());
+        event.preventDefault();
+    });
+};
+//
+wait_for_element('.a-GV-cell', 'main', attach_copy_to_grid);
+*/
 
 
 
