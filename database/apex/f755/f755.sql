@@ -33,7 +33,7 @@ prompt APPLICATION 755 - Tracking Apps
 -- Application Export:
 --   Application:     755
 --   Name:            Tracking Apps
---   Date and Time:   16:35 Úterý Červenec 25, 2023
+--   Date and Time:   17:46 Čtvrtek Srpen 3, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -113,7 +113,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-07-25'
+,p_flow_version=>'2023-08-03'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -15216,42 +15216,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_point=>'BEFORE_FOOTER'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<script>',
-'',
-'//',
-'// WAIT FOR ELEMENT TO EXIST',
-'//',
-'var wait_for_element = function(search, start, fn, disconnect) {',
-'    var ob  = new MutationObserver(function(mutations) {',
-'        if ($(search).length) {',
-'            fn(search, start);',
-'            if (disconnect) {',
-'                observer.disconnect();  // keep observing',
-'            }',
-'        }',
-'    });',
-'    //',
-'    ob.observe(document.getElementById(start), {',
-'        childList: true,',
-'        subtree: true',
-'    });',
-'};',
-'',
-'//',
-'// HIDE SUCCESS MESSAGE',
-'//',
-'var hide_success_message = function(search, start) {',
-'    var $start = $(''#'' + start);',
-'    //',
-'    setTimeout(function() {',
-'        apex.message.hidePageSuccess();  // hide message',
-'        var content = $start.text().trim();',
-'        if (content.length) {',
-'            console.log(''MESSAGE CLOSED:'', content);',
-'        }',
-'        $start.html('''').removeClass(''u-visible'');  // clean APEX mess',
-'    }, 2000);',
-'};',
-'',
 '</script>',
 ''))
 ,p_attribute_01=>'N'
@@ -15267,17 +15231,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_point=>'BEFORE_FOOTER'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<style>',
-'',
-'ul.DASH_LIST {',
-'  list-style-type: none;',
-'  margin: 0.5rem 0 0.5rem 3rem;',
-'}',
-'ul.DASH_LIST li:before {',
-'  content: ''\2014'';',
-'  position: absolute;',
-'  margin: 0 3rem 0 -1.5rem;',
-'}',
-'',
 '</style>',
 ''))
 ,p_attribute_01=>'N'
@@ -19156,6 +19109,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(124368330622403335)
 ,p_button_image_alt=>'Refresh MV'
 ,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_execute_validations=>'N'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(7629224670981642)
