@@ -2,6 +2,12 @@
 -- YOU HAVE TO INSTALL THE CORE PACKAGE FIRST
 -- https://github.com/jkvetina/CORE23/tree/main/database
 --
+-- INDEX .................. 2
+-- MATERIALIZED VIEW ...... 2
+-- PACKAGE ................ 1
+-- PACKAGE BODY ........... 1
+-- TABLE .................. 4
+-- VIEW .................. 12
 
 --
 -- INIT
@@ -11,6 +17,7 @@
 --
 -- TABLES
 --
+@@"./database/tables/trc_activity_log.sql"
 @@"./database/tables/trc_lov_colors.sql"
 @@"./database/tables/trc_lov_metrics.sql"
 @@"./database/tables/trc_navigation.sql"
